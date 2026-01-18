@@ -1102,6 +1102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initVocabularyBuilder();
     initAccessibilityPanel();
     updateStudyStreak();
+    initUIEnhancements();
 
     // Check achievements
     if (AppState.progress) {
@@ -1111,3 +1112,187 @@ document.addEventListener('DOMContentLoaded', function() {
         checkAchievement('all_cards', AppState.progress.questionsStudied.length >= 100);
     }
 });
+
+/* =====================================================
+   UI ENHANCEMENTS 2026
+   ===================================================== */
+function initUIEnhancements() {
+    initScrollProgress();
+    initBackToTop();
+    initNavbarScroll();
+    initRippleEffect();
+    initCardFocusable();
+}
+
+// Scroll Progress Indicator
+function initScrollProgress() {
+    var progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+
+    function updateScrollProgress() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    }
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+}
+
+// Back to Top Button
+function initBackToTop() {
+    var backToTop = document.getElementById('back-to-top');
+    if (!backToTop) return;
+
+    function toggleBackToTop() {
+        var scrollY = window.scrollY || document.documentElement.scrollTop;
+        if (scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Navbar Scroll Effect
+function initNavbarScroll() {
+    var navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    function handleNavbarScroll() {
+        var scrollY = window.scrollY || document.documentElement.scrollTop;
+        if (scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    handleNavbarScroll();
+}
+
+// Ripple Effect on Buttons
+function initRippleEffect() {
+    document.addEventListener('click', function(e) {
+        var target = e.target;
+        if (target.classList.contains('btn') || target.closest('.btn')) {
+            var btn = target.classList.contains('btn') ? target : target.closest('.btn');
+
+            // Create ripple element
+            var ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+
+            // Calculate position
+            var rect = btn.getBoundingClientRect();
+            var size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+            ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+
+            btn.classList.add('ripple');
+            btn.appendChild(ripple);
+
+            // Remove ripple after animation
+            setTimeout(function() {
+                ripple.remove();
+            }, 600);
+        }
+    });
+}
+
+// Make Cards Focusable for Accessibility
+function initCardFocusable() {
+    var interactiveCards = document.querySelectorAll('.quick-card, .game-card, .category-card');
+    interactiveCards.forEach(function(card) {
+        if (!card.getAttribute('tabindex')) {
+            card.setAttribute('tabindex', '0');
+        }
+
+        // Allow keyboard activation
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+}
+
+// Confetti Effect for Celebrations
+function showConfetti() {
+    var container = document.createElement('div');
+    container.classList.add('confetti-container');
+    document.body.appendChild(container);
+
+    var colors = ['#BF0A30', '#002868', '#FFD700', '#FFFFFF', '#10b981'];
+
+    for (var i = 0; i < 50; i++) {
+        var confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        container.appendChild(confetti);
+    }
+
+    setTimeout(function() {
+        container.remove();
+    }, 5000);
+}
+
+// Achievement Unlock Animation
+function showAchievementUnlock(title, description) {
+    var existing = document.querySelector('.achievement-unlock');
+    if (existing) existing.remove();
+
+    var achievement = document.createElement('div');
+    achievement.classList.add('achievement-unlock');
+    achievement.innerHTML = '<strong>' + title + '</strong><br><small>' + description + '</small>';
+    document.body.appendChild(achievement);
+
+    showConfetti();
+
+    setTimeout(function() {
+        achievement.remove();
+    }, 4000);
+}
+
+// Loading State Helper
+function setButtonLoading(btn, isLoading) {
+    if (isLoading) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+    } else {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+    }
+}
+
+// Error Shake Animation Helper
+function shakeElement(element) {
+    element.classList.add('error-shake');
+    setTimeout(function() {
+        element.classList.remove('error-shake');
+    }, 500);
+}
+
+// Success Pop Animation Helper
+function successPop(element) {
+    element.classList.add('success-icon');
+    setTimeout(function() {
+        element.classList.remove('success-icon');
+    }, 500);
+}
