@@ -179,7 +179,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Skip to Main Content for Keyboard Users -->
+    <a href="#main-content" class="skip-to-main">Skip to Main Content</a>
+
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-brand">
             <span class="flag-icon">🇺🇸</span>
             <span>U.S. Citizenship Study Guide</span>
@@ -207,7 +210,7 @@
         <button class="mobile-menu-btn">☰</button>
     </nav>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content" role="main">
         <!-- Home Section -->
         <section id="home" class="section active">
             <div class="hero">
@@ -2006,6 +2009,49 @@
             </div>
         </div>
     </footer>
+
+    <!-- Accessibility Settings Panel -->
+    <div class="accessibility-panel" id="accessibility-panel">
+        <button class="accessibility-toggle" id="accessibility-toggle" aria-label="Open accessibility settings" title="Accessibility Settings">
+            <span aria-hidden="true">&#9881;</span>
+        </button>
+        <div class="accessibility-menu" id="accessibility-menu" role="dialog" aria-label="Accessibility settings">
+            <h3>Accessibility Settings</h3>
+
+            <div class="accessibility-option">
+                <label for="font-size-select">Text Size</label>
+                <div class="font-size-controls">
+                    <button class="font-size-btn active" data-size="normal" aria-label="Normal text size">A</button>
+                    <button class="font-size-btn" data-size="large" aria-label="Large text size">A+</button>
+                    <button class="font-size-btn" data-size="xl" aria-label="Extra large text size">A++</button>
+                </div>
+            </div>
+
+            <div class="accessibility-option">
+                <label for="high-contrast-toggle">High Contrast</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="high-contrast-toggle" aria-label="Enable high contrast mode">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="accessibility-option">
+                <label for="dyslexia-toggle">Dyslexia-Friendly</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="dyslexia-toggle" aria-label="Enable dyslexia-friendly font">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="accessibility-option">
+                <label for="reduce-motion-toggle">Reduce Motion</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="reduce-motion-toggle" aria-label="Reduce animations">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
 
     <script src="questions.js"></script>
     <script src="officials.js"></script>

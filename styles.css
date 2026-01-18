@@ -4561,3 +4561,659 @@ body.dark-mode .footer {
 .game-active {
     margin-top: 2rem;
 }
+
+/* =====================================================
+   ENHANCED RESPONSIVE DESIGN - Multiple Breakpoints
+   ===================================================== */
+
+/* Extra Small Devices (phones in portrait, < 480px) */
+@media (max-width: 479px) {
+    html {
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .section-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .flashcard {
+        height: 280px;
+    }
+
+    #flashcard-question {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-brand {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .flag-icon {
+        font-size: 1.5rem;
+    }
+
+    .quiz-question-card,
+    .exam-question-card {
+        padding: 1rem;
+    }
+
+    .choice-btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .setup-option {
+        padding: 0.75rem;
+    }
+
+    .matching-card {
+        min-height: 60px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Small Devices (phones in landscape, 480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .flashcard {
+        height: 300px;
+    }
+
+    .branches-container,
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .matching-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Medium Devices (tablets, 768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    .branches-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .presidents-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .interview-tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Devices (desktops, 1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .main-content {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .branches-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Extra Large Devices (large desktops, 1280px - 1535px) */
+@media (min-width: 1280px) and (max-width: 1535px) {
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 3rem;
+    }
+
+    .hero {
+        padding: 4rem 3rem;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 2XL Devices (ultra-wide screens, >= 1536px) */
+@media (min-width: 1536px) {
+    html {
+        font-size: 18px;
+    }
+
+    .main-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2.5rem 4rem;
+    }
+
+    .hero {
+        padding: 5rem 4rem;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .flashcard {
+        height: 450px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    #flashcard-question {
+        font-size: 1.75rem;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .presidents-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Fluid Typography - Scales smoothly between breakpoints */
+@media (min-width: 480px) {
+    html {
+        font-size: calc(14px + (18 - 14) * ((100vw - 480px) / (1536 - 480)));
+    }
+}
+
+/* =====================================================
+   ACCESSIBILITY FEATURES
+   ===================================================== */
+
+/* Skip to Main Content Link */
+.skip-to-main {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    z-index: 9999;
+    transition: top 0.3s ease;
+    font-weight: 600;
+}
+
+.skip-to-main:focus {
+    top: 0.5rem;
+}
+
+/* Enhanced Focus Styles for Keyboard Navigation */
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+.choice-btn:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+/* Improved focus for form elements */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--royal-blue);
+    outline-offset: 2px;
+    border-color: var(--royal-blue);
+}
+
+/* Respect User's Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .flag-icon {
+        animation: none;
+    }
+
+    .flashcard-inner {
+        transition: none;
+    }
+
+    .matching-card,
+    .btn,
+    .nav-link {
+        transition: none;
+    }
+}
+
+/* Respect User's Color Scheme Preference */
+@media (prefers-color-scheme: dark) {
+    body:not(.light-mode-forced) {
+        --off-white: #1a1a2e;
+        --gray-50: #16213e;
+        --gray-100: #1a1a2e;
+        --gray-200: #2d2d44;
+        --gray-300: #404060;
+        --gray-800: #e0e0e0;
+        --gray-900: #ffffff;
+        background: #0f0f1a;
+        color: #e0e0e0;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+    :root {
+        --navy: #000066;
+        --patriot-red: #cc0000;
+        --gray-600: #000000;
+        --gray-800: #000000;
+    }
+
+    body {
+        background: #ffffff;
+        color: #000000;
+    }
+
+    .btn,
+    .nav-link,
+    .choice-btn {
+        border: 2px solid currentColor;
+    }
+
+    *:focus-visible {
+        outline-width: 4px;
+        outline-color: #000000;
+    }
+}
+
+/* =====================================================
+   ACCESSIBILITY SETTINGS PANEL STYLES
+   ===================================================== */
+.accessibility-panel {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1001;
+}
+
+.accessibility-toggle {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.accessibility-toggle:hover {
+    background: var(--navy-light);
+    transform: scale(1.1);
+}
+
+.accessibility-menu {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    padding: 1rem;
+    min-width: 250px;
+    display: none;
+}
+
+.accessibility-menu.open {
+    display: block;
+}
+
+.accessibility-menu h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+    color: var(--navy);
+}
+
+.accessibility-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.accessibility-option:last-child {
+    border-bottom: none;
+}
+
+.accessibility-option label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--gray-300);
+    transition: 0.3s;
+    border-radius: 26px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: var(--royal-blue);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+}
+
+/* Font Size Controls */
+.font-size-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.font-size-btn {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.font-size-btn:hover {
+    background: var(--gray-200);
+}
+
+.font-size-btn.active {
+    background: var(--royal-blue);
+    color: var(--white);
+    border-color: var(--royal-blue);
+}
+
+/* Large Text Mode */
+body.large-text {
+    font-size: 1.25rem;
+}
+
+body.large-text .hero h1 {
+    font-size: 3rem;
+}
+
+body.large-text #flashcard-question {
+    font-size: 1.5rem;
+}
+
+body.large-text .btn {
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+}
+
+body.large-text .nav-link {
+    font-size: 1rem;
+}
+
+/* Extra Large Text Mode */
+body.xl-text {
+    font-size: 1.5rem;
+}
+
+body.xl-text .hero h1 {
+    font-size: 3.5rem;
+}
+
+body.xl-text #flashcard-question {
+    font-size: 1.75rem;
+}
+
+body.xl-text .btn {
+    font-size: 1.25rem;
+    padding: 1.25rem 2rem;
+}
+
+body.xl-text .nav-link {
+    font-size: 1.1rem;
+}
+
+/* High Contrast Mode (Manual Toggle) */
+body.high-contrast {
+    --navy: #000000;
+    --navy-dark: #000000;
+    --navy-light: #000033;
+    --patriot-red: #cc0000;
+    --gray-100: #ffffff;
+    --gray-200: #cccccc;
+    --gray-800: #000000;
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.high-contrast .section,
+body.high-contrast .info-card,
+body.high-contrast .flashcard-front,
+body.high-contrast .flashcard-back,
+body.high-contrast .quiz-question-card,
+body.high-contrast .game-card {
+    background: #ffffff;
+    border: 3px solid #000000;
+}
+
+body.high-contrast .btn {
+    border: 2px solid currentColor;
+}
+
+body.high-contrast *:focus-visible {
+    outline: 4px solid #000000;
+    outline-offset: 4px;
+}
+
+/* Dyslexia-Friendly Mode */
+body.dyslexia-friendly {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', Arial, sans-serif;
+    letter-spacing: 0.1em;
+    word-spacing: 0.2em;
+    line-height: 2;
+}
+
+body.dyslexia-friendly p,
+body.dyslexia-friendly span,
+body.dyslexia-friendly li {
+    text-align: left;
+}
+
+/* =====================================================
+   TOUCH-FRIENDLY ENHANCEMENTS
+   ===================================================== */
+@media (pointer: coarse) {
+    /* Larger touch targets for touchscreens */
+    .btn,
+    .nav-link,
+    .choice-btn,
+    .matching-card,
+    .toggle-switch {
+        min-height: 48px;
+        min-width: 48px;
+    }
+
+    .nav-link {
+        padding: 1rem 1.5rem;
+    }
+
+    .choice-btn {
+        padding: 1rem;
+    }
+
+    /* More spacing between interactive elements */
+    .flashcard-nav {
+        gap: 1rem;
+    }
+
+    .quiz-actions {
+        gap: 1rem;
+    }
+}
+
+/* =====================================================
+   SCREEN READER ONLY (Visually Hidden)
+   ===================================================== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Visible on focus for skip links */
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* =====================================================
+   LANDSCAPE MODE OPTIMIZATIONS
+   ===================================================== */
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        padding: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+    }
+
+    .flashcard {
+        height: 200px;
+    }
+
+    .navbar {
+        padding: 0;
+    }
+
+    .nav-brand {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* =====================================================
+   SAFE AREA SUPPORT (Notched Devices)
+   ===================================================== */
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+
+    .main-content {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    }
+
+    .accessibility-panel {
+        right: max(1rem, env(safe-area-inset-right));
+        bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+}

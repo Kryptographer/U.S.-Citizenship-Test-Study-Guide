@@ -972,6 +972,125 @@ function closeVocabMode() {
 // INITIALIZE ALL NEW FEATURES
 // =====================================================
 
+// =====================================================
+// ACCESSIBILITY SETTINGS PANEL
+// =====================================================
+
+function initAccessibilityPanel() {
+    var toggleBtn = document.getElementById('accessibility-toggle');
+    var menu = document.getElementById('accessibility-menu');
+    var fontSizeBtns = document.querySelectorAll('.font-size-btn');
+    var highContrastToggle = document.getElementById('high-contrast-toggle');
+    var dyslexiaToggle = document.getElementById('dyslexia-toggle');
+    var reduceMotionToggle = document.getElementById('reduce-motion-toggle');
+
+    // Load saved preferences
+    loadAccessibilityPreferences();
+
+    // Toggle menu
+    if (toggleBtn && menu) {
+        toggleBtn.addEventListener('click', function() {
+            menu.classList.toggle('open');
+            var isOpen = menu.classList.contains('open');
+            toggleBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.accessibility-panel')) {
+                menu.classList.remove('open');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.focus();
+            }
+        });
+    }
+
+    // Font size controls
+    fontSizeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            fontSizeBtns.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var size = btn.getAttribute('data-size');
+            setFontSize(size);
+        });
+    });
+
+    // High contrast toggle
+    if (highContrastToggle) {
+        highContrastToggle.addEventListener('change', function() {
+            document.body.classList.toggle('high-contrast', this.checked);
+            localStorage.setItem('highContrast', this.checked);
+        });
+    }
+
+    // Dyslexia-friendly toggle
+    if (dyslexiaToggle) {
+        dyslexiaToggle.addEventListener('change', function() {
+            document.body.classList.toggle('dyslexia-friendly', this.checked);
+            localStorage.setItem('dyslexiaFriendly', this.checked);
+        });
+    }
+
+    // Reduce motion toggle
+    if (reduceMotionToggle) {
+        reduceMotionToggle.addEventListener('change', function() {
+            document.body.classList.toggle('reduce-motion', this.checked);
+            localStorage.setItem('reduceMotion', this.checked);
+        });
+    }
+}
+
+function setFontSize(size) {
+    document.body.classList.remove('large-text', 'xl-text');
+    if (size === 'large') {
+        document.body.classList.add('large-text');
+    } else if (size === 'xl') {
+        document.body.classList.add('xl-text');
+    }
+    localStorage.setItem('fontSize', size);
+}
+
+function loadAccessibilityPreferences() {
+    // Font size
+    var savedFontSize = localStorage.getItem('fontSize') || 'normal';
+    setFontSize(savedFontSize);
+    var fontBtns = document.querySelectorAll('.font-size-btn');
+    fontBtns.forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-size') === savedFontSize);
+    });
+
+    // High contrast
+    var highContrast = localStorage.getItem('highContrast') === 'true';
+    document.body.classList.toggle('high-contrast', highContrast);
+    var hcToggle = document.getElementById('high-contrast-toggle');
+    if (hcToggle) hcToggle.checked = highContrast;
+
+    // Dyslexia-friendly
+    var dyslexia = localStorage.getItem('dyslexiaFriendly') === 'true';
+    document.body.classList.toggle('dyslexia-friendly', dyslexia);
+    var dfToggle = document.getElementById('dyslexia-toggle');
+    if (dfToggle) dfToggle.checked = dyslexia;
+
+    // Reduce motion
+    var reduceMotion = localStorage.getItem('reduceMotion') === 'true';
+    document.body.classList.toggle('reduce-motion', reduceMotion);
+    var rmToggle = document.getElementById('reduce-motion-toggle');
+    if (rmToggle) rmToggle.checked = reduceMotion;
+}
+
+// Add reduce-motion class styles
+var motionStyle = document.createElement('style');
+motionStyle.textContent = 'body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }';
+document.head.appendChild(motionStyle);
+
 document.addEventListener('DOMContentLoaded', function() {
     initDarkMode();
     initTextToSpeech();
@@ -981,6 +1100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPresidents();
     initProcess();
     initVocabularyBuilder();
+    initAccessibilityPanel();
     updateStudyStreak();
 
     // Check achievements
