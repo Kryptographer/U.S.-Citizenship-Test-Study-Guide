@@ -1,0 +1,53 @@
+# robots.txt for U.S. Citizenship Test Study Guide
+# Optimized for maximum search engine crawling and indexing
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /styles.css
+Allow: /app.js
+Allow: /questions.js
+Allow: /officials.js
+
+# Encourage search engines to crawl frequently
+Crawl-delay: 0
+
+# Sitemap location
+Sitemap: https://kryptographer.github.io/U.S.-Citizenship-Test-Study-Guide/sitemap.xml
+
+# Allow all major search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
