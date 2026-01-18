@@ -6,7 +6,7 @@ const CATEGORIES = {
     SYSTEM: "System of Government",
     RIGHTS: "Rights and Responsibilities",
     COLONIAL: "Colonial Period and Independence",
-    1800S: "1800s",
+    "1800S": "1800s",
     RECENT: "Recent American History",
     GEOGRAPHY: "Geography",
     SYMBOLS: "Symbols and Holidays"
