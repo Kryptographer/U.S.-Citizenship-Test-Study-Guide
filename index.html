@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Citizenship Test Study Guide - 100 Civics Questions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="flag-icon">🇺🇸</span>
+            <span>U.S. Citizenship Study Guide</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" data-section="home" class="nav-link active">Home</a>
+            <a href="#" data-section="flashcards" class="nav-link">Flash Cards</a>
+            <a href="#" data-section="quiz" class="nav-link">Quiz</a>
+            <a href="#" data-section="exam" class="nav-link">Practice Exam</a>
+            <a href="#" data-section="study" class="nav-link">Study Guide</a>
+            <a href="#" data-section="government" class="nav-link">Government</a>
+            <a href="#" data-section="history" class="nav-link">History</a>
+            <a href="#" data-section="progress" class="nav-link">Progress</a>
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Master the U.S. Citizenship Test</h1>
+                <p>Interactive study tools to help you pass the USCIS Naturalization Civics Test</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">100</span>
+                        <span class="stat-label">Official Questions</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Questions on Test</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Correct to Pass</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-start">
+                <h2>Quick Start</h2>
+                <div class="quick-start-grid">
+                    <div class="quick-card" data-goto="flashcards">
+                        <div class="quick-icon">🃏</div>
+                        <h3>Flash Cards</h3>
+                        <p>Flip through all 100 questions with instant answer reveals</p>
+                    </div>
+                    <div class="quick-card" data-goto="quiz">
+                        <div class="quick-icon">❓</div>
+                        <h3>Practice Quiz</h3>
+                        <p>Test your knowledge with customizable quizzes by category</p>
+                    </div>
+                    <div class="quick-card" data-goto="exam">
+                        <div class="quick-icon">📝</div>
+                        <h3>Practice Exam</h3>
+                        <p>Simulate the real test with 10 random questions</p>
+                    </div>
+                    <div class="quick-card" data-goto="study">
+                        <div class="quick-icon">📚</div>
+                        <h3>Study Guide</h3>
+                        <p>Browse all questions organized by topic</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categories-preview">
+                <h2>Question Categories</h2>
+                <div class="category-grid" id="home-categories">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="test-info">
+                <h2>About the Civics Test</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h3>The Test Format</h3>
+                        <p>During your naturalization interview, a USCIS officer will ask you up to 10 questions from the list of 100 civics questions. You must answer 6 out of 10 questions correctly to pass.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Speaking Test</h3>
+                        <p>The civics test is an oral test - you must speak your answers. Some questions have multiple acceptable answers, and you only need to provide one correct answer.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Special Considerations</h3>
+                        <p>Applicants 65 years or older with 20+ years of permanent residence may study only 20 marked questions (indicated with asterisks).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flash Cards Section -->
+        <section id="flashcards" class="section">
+            <div class="section-header">
+                <h1>Flash Cards</h1>
+                <p>Click on a card to flip and reveal the answer</p>
+            </div>
+
+            <div class="flashcard-controls">
+                <div class="control-group">
+                    <label>Category:</label>
+                    <select id="flashcard-category">
+                        <option value="all">All Categories</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="flashcard-shuffle"> Shuffle Cards
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="flashcard-65plus"> 65/20 Questions Only
+                    </label>
+                </div>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard-progress">
+                    <span id="flashcard-current">1</span> / <span id="flashcard-total">100</span>
+                </div>
+
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span class="card-label">Question</span>
+                            <p id="flashcard-question"></p>
+                            <span class="flip-hint">Click to flip</span>
+                        </div>
+                        <div class="flashcard-back">
+                            <span class="card-label">Answer</span>
+                            <div id="flashcard-answer"></div>
+                            <span class="flip-hint">Click to flip back</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard-nav">
+                    <button id="flashcard-prev" class="btn btn-secondary">← Previous</button>
+                    <button id="flashcard-mark" class="btn btn-outline">⭐ Mark for Review</button>
+                    <button id="flashcard-next" class="btn btn-primary">Next →</button>
+                </div>
+
+                <div class="flashcard-keyboard-hint">
+                    Keyboard: ← Previous | Space to Flip | → Next | M to Mark
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="section-header">
+                <h1>Practice Quiz</h1>
+                <p>Test your knowledge with customizable quizzes</p>
+            </div>
+
+            <div id="quiz-setup" class="quiz-setup">
+                <div class="setup-card">
+                    <h3>Quiz Settings</h3>
+
+                    <div class="setup-option">
+                        <label>Number of Questions:</label>
+                        <select id="quiz-count">
+                            <option value="10">10 Questions</option>
+                            <option value="20">20 Questions</option>
+                            <option value="50">50 Questions</option>
+                            <option value="100">All 100 Questions</option>
+                        </select>
+                    </div>
+
+                    <div class="setup-option">
+                        <label>Category:</label>
+                        <select id="quiz-category">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+
+                    <div class="setup-option">
+                        <label>Question Type:</label>
+                        <select id="quiz-type">
+                            <option value="written">Type Your Answer</option>
+                            <option value="multiple">Multiple Choice</option>
+                            <option value="reveal">Show/Reveal</option>
+                        </select>
+                    </div>
+
+                    <div class="setup-option">
+                        <label>
+                            <input type="checkbox" id="quiz-65plus"> 65/20 Questions Only
+                        </label>
+                    </div>
+
+                    <div class="setup-option">
+                        <label>
+                            <input type="checkbox" id="quiz-marked"> Marked Questions Only
+                        </label>
+                    </div>
+
+                    <button id="start-quiz" class="btn btn-primary btn-large">Start Quiz</button>
+                </div>
+            </div>
+
+            <div id="quiz-active" class="quiz-active hidden">
+                <div class="quiz-header">
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                    </div>
+                    <div class="quiz-stats">
+                        <span>Question <span id="quiz-current-num">1</span> of <span id="quiz-total-num">10</span></span>
+                        <span class="quiz-score">Score: <span id="quiz-score">0</span></span>
+                    </div>
+                </div>
+
+                <div class="quiz-question-card">
+                    <div class="question-number" id="quiz-q-number">Q1</div>
+                    <p class="question-text" id="quiz-question-text"></p>
+
+                    <div id="quiz-answer-area">
+                        <!-- Dynamic content based on quiz type -->
+                    </div>
+
+                    <div id="quiz-feedback" class="quiz-feedback hidden">
+                        <div class="feedback-icon"></div>
+                        <div class="feedback-text"></div>
+                        <div class="correct-answer"></div>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button id="quiz-submit" class="btn btn-primary">Submit Answer</button>
+                        <button id="quiz-next" class="btn btn-primary hidden">Next Question</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-results" class="quiz-results hidden">
+                <div class="results-card">
+                    <h2>Quiz Complete!</h2>
+                    <div class="results-score">
+                        <div class="score-circle">
+                            <span class="score-percent" id="results-percent">0%</span>
+                        </div>
+                    </div>
+                    <div class="results-stats">
+                        <div class="result-stat">
+                            <span class="result-num" id="results-correct">0</span>
+                            <span class="result-label">Correct</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-num" id="results-incorrect">0</span>
+                            <span class="result-label">Incorrect</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-num" id="results-total">0</span>
+                            <span class="result-label">Total</span>
+                        </div>
+                    </div>
+                    <div class="results-message" id="results-message"></div>
+                    <div class="results-actions">
+                        <button id="review-quiz" class="btn btn-secondary">Review Answers</button>
+                        <button id="retry-quiz" class="btn btn-primary">Try Again</button>
+                    </div>
+                </div>
+
+                <div id="quiz-review" class="quiz-review hidden">
+                    <h3>Review Your Answers</h3>
+                    <div id="review-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exam Section -->
+        <section id="exam" class="section">
+            <div class="section-header">
+                <h1>Practice Exam</h1>
+                <p>Simulate the real citizenship test experience</p>
+            </div>
+
+            <div id="exam-intro" class="exam-intro">
+                <div class="exam-info-card">
+                    <h3>About the Real Test</h3>
+                    <ul>
+                        <li>You will be asked <strong>10 questions</strong> from the 100 civics questions</li>
+                        <li>You must answer <strong>6 correctly</strong> to pass</li>
+                        <li>Questions are asked <strong>orally</strong> and you speak your answers</li>
+                        <li>The officer will <strong>stop once you get 6 correct</strong></li>
+                    </ul>
+                </div>
+
+                <div class="exam-options">
+                    <h3>Exam Mode</h3>
+                    <div class="exam-mode-options">
+                        <label class="exam-mode-option">
+                            <input type="radio" name="exam-mode" value="standard" checked>
+                            <span class="option-card">
+                                <strong>Standard Mode</strong>
+                                <small>10 random questions, answer all</small>
+                            </span>
+                        </label>
+                        <label class="exam-mode-option">
+                            <input type="radio" name="exam-mode" value="realistic">
+                            <span class="option-card">
+                                <strong>Realistic Mode</strong>
+                                <small>Stops when you pass (6 correct) or fail</small>
+                            </span>
+                        </label>
+                        <label class="exam-mode-option">
+                            <input type="radio" name="exam-mode" value="timed">
+                            <span class="option-card">
+                                <strong>Timed Mode</strong>
+                                <small>10 minutes total time limit</small>
+                            </span>
+                        </label>
+                    </div>
+                    <label class="exam-checkbox">
+                        <input type="checkbox" id="exam-65plus"> 65/20 Questions Only
+                    </label>
+                </div>
+
+                <button id="start-exam" class="btn btn-primary btn-large">Start Practice Exam</button>
+            </div>
+
+            <div id="exam-active" class="exam-active hidden">
+                <div class="exam-header">
+                    <div class="exam-status">
+                        <span class="status-item">Question <span id="exam-q-num">1</span>/10</span>
+                        <span class="status-item correct-count">Correct: <span id="exam-correct">0</span>/6 needed</span>
+                        <span class="status-item timer hidden" id="exam-timer">Time: <span id="exam-time">10:00</span></span>
+                    </div>
+                    <div class="exam-progress-dots" id="exam-dots">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+
+                <div class="exam-question-card">
+                    <p class="exam-question" id="exam-question"></p>
+                    <textarea id="exam-answer" placeholder="Type your answer here..." rows="3"></textarea>
+                    <div class="exam-voice-hint">
+                        <span>💡 Tip: Practice saying your answer out loud!</span>
+                    </div>
+                    <button id="exam-submit" class="btn btn-primary">Submit Answer</button>
+                </div>
+
+                <div id="exam-feedback" class="exam-feedback hidden">
+                    <div class="exam-feedback-content"></div>
+                    <button id="exam-next" class="btn btn-primary">Next Question</button>
+                </div>
+            </div>
+
+            <div id="exam-results" class="exam-results hidden">
+                <div class="exam-result-card">
+                    <div class="result-badge" id="exam-badge">
+                        <!-- PASS or FAIL -->
+                    </div>
+                    <h2 id="exam-result-title"></h2>
+                    <p id="exam-result-message"></p>
+                    <div class="exam-final-score">
+                        <span id="exam-final-correct">0</span> / <span id="exam-final-total">10</span> Correct
+                    </div>
+                    <div class="exam-result-actions">
+                        <button id="exam-review" class="btn btn-secondary">Review Answers</button>
+                        <button id="exam-retry" class="btn btn-primary">Try Again</button>
+                    </div>
+                </div>
+
+                <div id="exam-review-section" class="exam-review-section hidden">
+                    <h3>Answer Review</h3>
+                    <div id="exam-review-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Guide Section -->
+        <section id="study" class="section">
+            <div class="section-header">
+                <h1>Study Guide</h1>
+                <p>Browse all 100 questions organized by topic</p>
+            </div>
+
+            <div class="study-filters">
+                <input type="text" id="study-search" placeholder="Search questions..." class="search-input">
+                <select id="study-category-filter">
+                    <option value="all">All Categories</option>
+                </select>
+                <label class="filter-checkbox">
+                    <input type="checkbox" id="study-65plus-filter"> 65/20 Only
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" id="study-marked-filter"> Marked Only
+                </label>
+            </div>
+
+            <div class="study-content" id="study-content">
+                <!-- Generated by JS -->
+            </div>
+        </section>
+
+        <!-- Government Section -->
+        <section id="government" class="section">
+            <div class="section-header">
+                <h1>U.S. Government Structure</h1>
+                <p>Learn about the three branches and current officials</p>
+            </div>
+
+            <div class="gov-overview">
+                <div class="gov-principle">
+                    <h3>Constitutional Principles</h3>
+                    <div class="principles-grid">
+                        <div class="principle-card">
+                            <h4>Separation of Powers</h4>
+                            <p>Power is divided among three branches so no single branch becomes too powerful.</p>
+                        </div>
+                        <div class="principle-card">
+                            <h4>Checks and Balances</h4>
+                            <p>Each branch can limit the powers of the other branches.</p>
+                        </div>
+                        <div class="principle-card">
+                            <h4>Federalism</h4>
+                            <p>Power is shared between federal and state governments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="branches-container">
+                <div class="branch-card legislative">
+                    <div class="branch-header">
+                        <div class="branch-icon">🏛️</div>
+                        <h2>Legislative Branch</h2>
+                        <span class="branch-subtitle">Makes Laws</span>
+                    </div>
+                    <div class="branch-content">
+                        <div class="branch-body">
+                            <h4>Congress</h4>
+                            <p>The U.S. Congress is made up of two parts:</p>
+                            <div class="congress-chambers">
+                                <div class="chamber">
+                                    <h5>Senate</h5>
+                                    <ul>
+                                        <li>100 Senators (2 per state)</li>
+                                        <li>6-year terms</li>
+                                        <li>Must be 30+ years old</li>
+                                        <li>Confirms appointments</li>
+                                        <li>Ratifies treaties</li>
+                                    </ul>
+                                </div>
+                                <div class="chamber">
+                                    <h5>House of Representatives</h5>
+                                    <ul>
+                                        <li>435 Representatives</li>
+                                        <li>2-year terms</li>
+                                        <li>Must be 25+ years old</li>
+                                        <li>Based on state population</li>
+                                        <li>Initiates revenue bills</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="current-officials">
+                            <h4>Current Leaders</h4>
+                            <div class="officials-list" id="legislative-officials">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="branch-card executive">
+                    <div class="branch-header">
+                        <div class="branch-icon">🏠</div>
+                        <h2>Executive Branch</h2>
+                        <span class="branch-subtitle">Enforces Laws</span>
+                    </div>
+                    <div class="branch-content">
+                        <div class="branch-body">
+                            <h4>The President</h4>
+                            <ul>
+                                <li>Head of state and government</li>
+                                <li>Commander in Chief of military</li>
+                                <li>4-year term (max 2 terms)</li>
+                                <li>Must be 35+ years old</li>
+                                <li>Must be natural-born citizen</li>
+                                <li>Signs or vetoes bills</li>
+                            </ul>
+                            <h4>The Cabinet</h4>
+                            <p>15 executive departments advise the President:</p>
+                            <div class="cabinet-list">
+                                <span>State</span><span>Treasury</span><span>Defense</span>
+                                <span>Justice</span><span>Interior</span><span>Agriculture</span>
+                                <span>Commerce</span><span>Labor</span><span>HHS</span>
+                                <span>HUD</span><span>Transportation</span><span>Energy</span>
+                                <span>Education</span><span>Veterans Affairs</span><span>Homeland Security</span>
+                            </div>
+                        </div>
+                        <div class="current-officials">
+                            <h4>Current Leaders</h4>
+                            <div class="officials-list" id="executive-officials">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="branch-card judicial">
+                    <div class="branch-header">
+                        <div class="branch-icon">⚖️</div>
+                        <h2>Judicial Branch</h2>
+                        <span class="branch-subtitle">Interprets Laws</span>
+                    </div>
+                    <div class="branch-content">
+                        <div class="branch-body">
+                            <h4>The Supreme Court</h4>
+                            <ul>
+                                <li>Highest court in the land</li>
+                                <li>9 Justices (1 Chief, 8 Associate)</li>
+                                <li>Lifetime appointments</li>
+                                <li>Reviews laws for constitutionality</li>
+                                <li>Final interpreter of Constitution</li>
+                            </ul>
+                            <h4>Federal Court System</h4>
+                            <ul>
+                                <li>District Courts (trial courts)</li>
+                                <li>Circuit Courts of Appeals</li>
+                                <li>Supreme Court</li>
+                            </ul>
+                        </div>
+                        <div class="current-officials">
+                            <h4>Supreme Court Justices</h4>
+                            <div class="officials-list" id="judicial-officials">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="state-gov-section">
+                <h2>Your State Government</h2>
+                <div class="state-selector">
+                    <label>Select Your State:</label>
+                    <select id="state-select">
+                        <option value="">Choose a state...</option>
+                    </select>
+                </div>
+                <div id="state-info" class="state-info hidden">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="rights-section">
+                <h2>Rights and Responsibilities</h2>
+                <div class="rights-grid">
+                    <div class="rights-card">
+                        <h3>Rights of U.S. Citizens</h3>
+                        <ul>
+                            <li>Vote in federal elections</li>
+                            <li>Run for federal office</li>
+                            <li>Freedom of expression</li>
+                            <li>Freedom of religion</li>
+                            <li>Right to bear arms</li>
+                            <li>Right to a fair trial</li>
+                        </ul>
+                    </div>
+                    <div class="rights-card">
+                        <h3>Responsibilities of Citizens</h3>
+                        <ul>
+                            <li>Vote in elections</li>
+                            <li>Serve on a jury</li>
+                            <li>Pay taxes</li>
+                            <li>Obey laws</li>
+                            <li>Defend the country (if needed)</li>
+                            <li>Participate in democracy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="section">
+            <div class="section-header">
+                <h1>U.S. History</h1>
+                <p>Key events and figures in American history</p>
+            </div>
+
+            <div class="history-tabs">
+                <button class="history-tab active" data-period="colonial">Colonial Period</button>
+                <button class="history-tab" data-period="revolution">Revolution</button>
+                <button class="history-tab" data-period="1800s">1800s</button>
+                <button class="history-tab" data-period="1900s">1900s</button>
+                <button class="history-tab" data-period="symbols">Symbols</button>
+            </div>
+
+            <div class="history-content">
+                <div class="history-period active" id="period-colonial">
+                    <h2>Colonial Period & Independence</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1607</div>
+                            <div class="timeline-content">
+                                <h4>Jamestown</h4>
+                                <p>First permanent English settlement in America (Virginia)</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1620</div>
+                            <div class="timeline-content">
+                                <h4>Pilgrims / Mayflower</h4>
+                                <p>Pilgrims arrive at Plymouth Rock seeking religious freedom</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1776</div>
+                            <div class="timeline-content">
+                                <h4>Declaration of Independence</h4>
+                                <p>Written primarily by Thomas Jefferson, declared independence from Britain on July 4th</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1787</div>
+                            <div class="timeline-content">
+                                <h4>Constitutional Convention</h4>
+                                <p>Constitution written in Philadelphia. James Madison is the "Father of the Constitution"</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1788</div>
+                            <div class="timeline-content">
+                                <h4>Constitution Ratified</h4>
+                                <p>Constitution becomes the supreme law of the land</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1791</div>
+                            <div class="timeline-content">
+                                <h4>Bill of Rights</h4>
+                                <p>First 10 amendments added to protect individual rights</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="founding-fathers">
+                        <h3>Founding Fathers</h3>
+                        <div class="founders-grid">
+                            <div class="founder-card">
+                                <h4>George Washington</h4>
+                                <ul>
+                                    <li>"Father of Our Country"</li>
+                                    <li>First President</li>
+                                    <li>Commander of Continental Army</li>
+                                </ul>
+                            </div>
+                            <div class="founder-card">
+                                <h4>Thomas Jefferson</h4>
+                                <ul>
+                                    <li>Wrote Declaration of Independence</li>
+                                    <li>3rd President</li>
+                                    <li>Louisiana Purchase</li>
+                                </ul>
+                            </div>
+                            <div class="founder-card">
+                                <h4>Benjamin Franklin</h4>
+                                <ul>
+                                    <li>Diplomat to France</li>
+                                    <li>Oldest member at Convention</li>
+                                    <li>Started first free libraries</li>
+                                </ul>
+                            </div>
+                            <div class="founder-card">
+                                <h4>James Madison</h4>
+                                <ul>
+                                    <li>"Father of the Constitution"</li>
+                                    <li>4th President</li>
+                                    <li>Wrote Federalist Papers</li>
+                                </ul>
+                            </div>
+                            <div class="founder-card">
+                                <h4>Alexander Hamilton</h4>
+                                <ul>
+                                    <li>First Secretary of Treasury</li>
+                                    <li>Wrote Federalist Papers</li>
+                                    <li>Founded financial system</li>
+                                </ul>
+                            </div>
+                            <div class="founder-card">
+                                <h4>John Adams</h4>
+                                <ul>
+                                    <li>2nd President</li>
+                                    <li>First Vice President</li>
+                                    <li>Diplomat during Revolution</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="original-colonies">
+                        <h3>The 13 Original Colonies</h3>
+                        <div class="colonies-list">
+                            <span>Connecticut</span>
+                            <span>Delaware</span>
+                            <span>Georgia</span>
+                            <span>Maryland</span>
+                            <span>Massachusetts</span>
+                            <span>New Hampshire</span>
+                            <span>New Jersey</span>
+                            <span>New York</span>
+                            <span>North Carolina</span>
+                            <span>Pennsylvania</span>
+                            <span>Rhode Island</span>
+                            <span>South Carolina</span>
+                            <span>Virginia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-period" id="period-revolution">
+                    <h2>American Revolution</h2>
+                    <div class="info-box">
+                        <h3>Why did colonists fight the British?</h3>
+                        <ul>
+                            <li>Taxation without representation</li>
+                            <li>British army in their houses (quartering)</li>
+                            <li>No self-government</li>
+                            <li>High taxes (tea, stamps, etc.)</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1773</div>
+                            <div class="timeline-content">
+                                <h4>Boston Tea Party</h4>
+                                <p>Colonists protested British tea taxes by dumping tea in Boston Harbor</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1775</div>
+                            <div class="timeline-content">
+                                <h4>Revolutionary War Begins</h4>
+                                <p>Fighting starts at Lexington and Concord</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1776</div>
+                            <div class="timeline-content">
+                                <h4>Declaration of Independence</h4>
+                                <p>July 4, 1776 - America declares independence from Britain</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1783</div>
+                            <div class="timeline-content">
+                                <h4>War Ends</h4>
+                                <p>Treaty of Paris - Britain recognizes American independence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-period" id="period-1800s">
+                    <h2>1800s: Expansion & Civil War</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1803</div>
+                            <div class="timeline-content">
+                                <h4>Louisiana Purchase</h4>
+                                <p>U.S. bought territory from France, doubling the nation's size</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1812-1815</div>
+                            <div class="timeline-content">
+                                <h4>War of 1812</h4>
+                                <p>Second war with Britain; White House burned; Star-Spangled Banner written</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1846-1848</div>
+                            <div class="timeline-content">
+                                <h4>Mexican-American War</h4>
+                                <p>U.S. gained California and the Southwest</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1861-1865</div>
+                            <div class="timeline-content">
+                                <h4>Civil War</h4>
+                                <p>War between North (Union) and South (Confederacy) over slavery and states' rights</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1863</div>
+                            <div class="timeline-content">
+                                <h4>Emancipation Proclamation</h4>
+                                <p>Lincoln freed slaves in Confederate states</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1865</div>
+                            <div class="timeline-content">
+                                <h4>13th Amendment</h4>
+                                <p>Abolished slavery throughout the United States</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-figure">
+                        <h3>Abraham Lincoln</h3>
+                        <ul>
+                            <li>16th President (1861-1865)</li>
+                            <li>Led the nation during the Civil War</li>
+                            <li>Issued the Emancipation Proclamation</li>
+                            <li>Saved the Union</li>
+                            <li>Assassinated in 1865</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="history-period" id="period-1900s">
+                    <h2>1900s & Recent History</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1917-1918</div>
+                            <div class="timeline-content">
+                                <h4>World War I</h4>
+                                <p>U.S. fought with Allies against Germany and Austria-Hungary</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1929</div>
+                            <div class="timeline-content">
+                                <h4>Great Depression</h4>
+                                <p>Economic crisis; FDR created the New Deal programs</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1941-1945</div>
+                            <div class="timeline-content">
+                                <h4>World War II</h4>
+                                <p>U.S. fought against Germany, Italy, and Japan. Eisenhower was a key general.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1947-1991</div>
+                            <div class="timeline-content">
+                                <h4>Cold War</h4>
+                                <p>Tension between U.S. and Soviet Union (communism vs. democracy)</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1950s-1960s</div>
+                            <div class="timeline-content">
+                                <h4>Civil Rights Movement</h4>
+                                <p>Fight for equal rights for African Americans. Martin Luther King Jr. was the leader.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2001</div>
+                            <div class="timeline-content">
+                                <h4>September 11</h4>
+                                <p>Terrorist attacks on World Trade Center and Pentagon</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-figures-grid">
+                        <div class="key-figure">
+                            <h3>Franklin D. Roosevelt</h3>
+                            <ul>
+                                <li>32nd President</li>
+                                <li>Led during Great Depression</li>
+                                <li>Led during World War II</li>
+                                <li>Only president elected 4 times</li>
+                            </ul>
+                        </div>
+                        <div class="key-figure">
+                            <h3>Dwight D. Eisenhower</h3>
+                            <ul>
+                                <li>34th President</li>
+                                <li>General in World War II</li>
+                                <li>Supreme Allied Commander</li>
+                            </ul>
+                        </div>
+                        <div class="key-figure">
+                            <h3>Martin Luther King Jr.</h3>
+                            <ul>
+                                <li>Civil rights leader</li>
+                                <li>"I Have a Dream" speech</li>
+                                <li>Fought for equality through non-violence</li>
+                                <li>Nobel Peace Prize winner</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-period" id="period-symbols">
+                    <h2>American Symbols & Holidays</h2>
+
+                    <div class="symbols-section">
+                        <h3>National Symbols</h3>
+                        <div class="symbols-grid">
+                            <div class="symbol-card">
+                                <div class="symbol-icon">🇺🇸</div>
+                                <h4>The Flag</h4>
+                                <ul>
+                                    <li>50 stars = 50 states</li>
+                                    <li>13 stripes = 13 original colonies</li>
+                                    <li>Red, white, and blue</li>
+                                </ul>
+                            </div>
+                            <div class="symbol-card">
+                                <div class="symbol-icon">🗽</div>
+                                <h4>Statue of Liberty</h4>
+                                <ul>
+                                    <li>Gift from France</li>
+                                    <li>Located in New York Harbor</li>
+                                    <li>Symbol of freedom</li>
+                                </ul>
+                            </div>
+                            <div class="symbol-card">
+                                <div class="symbol-icon">🦅</div>
+                                <h4>Bald Eagle</h4>
+                                <ul>
+                                    <li>National bird</li>
+                                    <li>Symbol of strength</li>
+                                    <li>On the Great Seal</li>
+                                </ul>
+                            </div>
+                            <div class="symbol-card">
+                                <div class="symbol-icon">🎵</div>
+                                <h4>National Anthem</h4>
+                                <ul>
+                                    <li>"The Star-Spangled Banner"</li>
+                                    <li>Written by Francis Scott Key</li>
+                                    <li>During War of 1812</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="holidays-section">
+                        <h3>Federal Holidays</h3>
+                        <div class="holidays-grid">
+                            <div class="holiday-card">
+                                <h4>Independence Day</h4>
+                                <p>July 4th - Celebrates Declaration of Independence</p>
+                            </div>
+                            <div class="holiday-card">
+                                <h4>Memorial Day</h4>
+                                <p>Last Monday in May - Honors soldiers who died in military service</p>
+                            </div>
+                            <div class="holiday-card">
+                                <h4>Veterans Day</h4>
+                                <p>November 11th - Honors all who served in the military</p>
+                            </div>
+                            <div class="holiday-card">
+                                <h4>Labor Day</h4>
+                                <p>First Monday in September - Honors American workers</p>
+                            </div>
+                            <div class="holiday-card">
+                                <h4>Presidents' Day</h4>
+                                <p>Third Monday in February - Honors all presidents</p>
+                            </div>
+                            <div class="holiday-card">
+                                <h4>Martin Luther King Jr. Day</h4>
+                                <p>Third Monday in January - Honors civil rights leader</p>
+                            </div>
+                            <div class="holiday-card">
+                                <h4>Thanksgiving</h4>
+                                <p>Fourth Thursday in November - Celebrates harvest and Pilgrims</p>
+                            </div>
+                            <div class="holiday-card">
+                                <h4>Columbus Day</h4>
+                                <p>Second Monday in October - Marks Columbus's arrival in Americas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pledge-section">
+                        <h3>The Pledge of Allegiance</h3>
+                        <blockquote class="pledge">
+                            "I pledge allegiance to the Flag of the United States of America, and to the Republic for which it stands, one Nation under God, indivisible, with liberty and justice for all."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="section">
+            <div class="section-header">
+                <h1>Your Progress</h1>
+                <p>Track your study progress and performance</p>
+            </div>
+
+            <div class="progress-overview">
+                <div class="progress-card">
+                    <h3>Overall Progress</h3>
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="150" height="150">
+                            <circle class="progress-ring-bg" cx="75" cy="75" r="65"></circle>
+                            <circle class="progress-ring-fill" cx="75" cy="75" r="65" id="overall-progress-ring"></circle>
+                        </svg>
+                        <div class="progress-ring-text">
+                            <span id="overall-progress-percent">0%</span>
+                            <small>Mastered</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <h3>Study Statistics</h3>
+                    <div class="stats-list">
+                        <div class="stat-row">
+                            <span>Questions Studied</span>
+                            <span id="stat-studied">0 / 100</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Questions Mastered</span>
+                            <span id="stat-mastered">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Quizzes Taken</span>
+                            <span id="stat-quizzes">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Exams Passed</span>
+                            <span id="stat-exams-passed">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Average Score</span>
+                            <span id="stat-avg-score">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <h3>Marked for Review</h3>
+                    <div id="marked-questions-list" class="marked-list">
+                        <p class="empty-message">No questions marked yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-progress">
+                <h3>Progress by Category</h3>
+                <div id="category-progress-list" class="category-progress-list">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+
+            <div class="weak-areas">
+                <h3>Questions to Review</h3>
+                <p>Questions you've answered incorrectly</p>
+                <div id="weak-questions-list" class="weak-list">
+                    <p class="empty-message">No weak areas identified yet. Take some quizzes!</p>
+                </div>
+            </div>
+
+            <div class="progress-actions">
+                <button id="reset-progress" class="btn btn-danger">Reset All Progress</button>
+                <button id="export-progress" class="btn btn-secondary">Export Progress</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Study materials based on the official USCIS 100 Civics Questions</p>
+        <p><a href="https://www.uscis.gov/citizenship" target="_blank">Visit USCIS Official Website</a></p>
+    </footer>
+
+    <script src="questions.js"></script>
+    <script src="officials.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
