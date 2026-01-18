@@ -3210,8 +3210,13 @@ body.dark-mode {
     --gray-100: #1a1a2e;
     --gray-200: #2d2d44;
     --gray-300: #404060;
+    --gray-400: #9ca3af;
+    --gray-500: #b0b8c4;
+    --gray-600: #c0c8d4;
+    --gray-700: #d0d8e4;
     --gray-800: #e0e0e0;
     --gray-900: #ffffff;
+    --gold-dark: #ffd700;
     background: #0f0f1a;
     color: #e0e0e0;
 }
