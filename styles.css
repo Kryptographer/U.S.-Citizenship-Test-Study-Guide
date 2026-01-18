@@ -3274,6 +3274,55 @@ body.dark-mode .footer {
     background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 100%);
 }
 
+/* Dark mode section headings - improved readability */
+body.dark-mode .categories-preview h2,
+body.dark-mode .test-info h2,
+body.dark-mode .study-tips-section h2,
+body.dark-mode .interview-prep-section h2,
+body.dark-mode .quick-facts-section h2,
+body.dark-mode .mistakes-section h2 {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode category cards */
+body.dark-mode .category-card {
+    background: #1e2a4a;
+    border-left-color: #ff6b6b;
+}
+
+body.dark-mode .category-card:hover {
+    background: #263352;
+    border-left-color: #4a90d9;
+}
+
+body.dark-mode .category-name {
+    color: #e0e8f0;
+}
+
+body.dark-mode .category-count {
+    background: linear-gradient(135deg, #3d5a99 0%, #4a7ac7 100%);
+}
+
+/* Dark mode info cards text */
+body.dark-mode .info-card h3 {
+    color: #7eb8ff;
+}
+
+body.dark-mode .info-card p {
+    color: #c8d4e8;
+}
+
+/* Dark mode tip cards */
+body.dark-mode .tip-card h3 {
+    color: #7eb8ff;
+}
+
+body.dark-mode .tip-card p,
+body.dark-mode .tip-card li {
+    color: #c8d4e8;
+}
+
 /* =====================================================
    NAVIGATION CONTROLS
    ===================================================== */
