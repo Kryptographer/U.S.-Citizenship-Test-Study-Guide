@@ -1,6 +1,14 @@
 // U.S. Citizenship Test Study Guide - Main Application
 // =====================================================
 
+// Utility function to escape HTML and prevent XSS
+function escapeHtml(text) {
+    if (text === null || text === undefined) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // Global State
 const AppState = {
     currentSection: 'home',
@@ -620,9 +628,9 @@ function showQuizReview() {
 
     reviewList.innerHTML = AppState.quiz.answers.map((a, i) => `
         <div class="review-item ${a.isCorrect ? 'correct' : 'incorrect'}">
-            <div class="review-question">${i + 1}. ${a.question}</div>
-            <div class="review-your-answer">Your answer: ${a.userAnswer || '(no answer)'}</div>
-            ${!a.isCorrect ? `<div class="review-correct-answer">Correct: ${a.correctAnswers.join(' OR ')}</div>` : ''}
+            <div class="review-question">${i + 1}. ${escapeHtml(a.question)}</div>
+            <div class="review-your-answer">Your answer: ${escapeHtml(a.userAnswer) || '(no answer)'}</div>
+            ${!a.isCorrect ? `<div class="review-correct-answer">Correct: ${a.correctAnswers.map(ans => escapeHtml(ans)).join(' OR ')}</div>` : ''}
         </div>
     `).join('');
 }
@@ -837,9 +845,9 @@ function showExamReview() {
 
     reviewList.innerHTML = AppState.exam.answers.map((a, i) => `
         <div class="review-item ${a.isCorrect ? 'correct' : 'incorrect'}">
-            <div class="review-question">${i + 1}. ${a.question}</div>
-            <div class="review-your-answer">Your answer: ${a.userAnswer || '(no answer)'}</div>
-            ${!a.isCorrect ? `<div class="review-correct-answer">Correct: ${a.correctAnswers.join(' OR ')}</div>` : ''}
+            <div class="review-question">${i + 1}. ${escapeHtml(a.question)}</div>
+            <div class="review-your-answer">Your answer: ${escapeHtml(a.userAnswer) || '(no answer)'}</div>
+            ${!a.isCorrect ? `<div class="review-correct-answer">Correct: ${a.correctAnswers.map(ans => escapeHtml(ans)).join(' OR ')}</div>` : ''}
         </div>
     `).join('');
 }
@@ -1291,6 +1299,11 @@ function addWeakQuestion(id) {
         AppState.progress.weakQuestions.splice(idx, 1);
     }
     AppState.progress.weakQuestions.unshift(id);
+
+    // Limit weak questions list to 20 items to prevent unbounded growth
+    if (AppState.progress.weakQuestions.length > 20) {
+        AppState.progress.weakQuestions = AppState.progress.weakQuestions.slice(0, 20);
+    }
 
     // Remove from mastered
     const masterIdx = AppState.progress.questionsMastered.indexOf(id);
