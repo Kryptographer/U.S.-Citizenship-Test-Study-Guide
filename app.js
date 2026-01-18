@@ -284,7 +284,7 @@ function updateFlashcardDisplay() {
 
     let answerHtml = '<ul>';
     answers.forEach(a => {
-        answerHtml += `<li>${a}</li>`;
+        answerHtml += `<li>${escapeHtml(a)}</li>`;
     });
     answerHtml += '</ul>';
     document.getElementById('flashcard-answer').innerHTML = answerHtml;
