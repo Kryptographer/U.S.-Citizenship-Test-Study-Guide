@@ -3200,3 +3200,1364 @@ body::before {
         display: none;
     }
 }
+
+/* =====================================================
+   DARK MODE
+   ===================================================== */
+body.dark-mode {
+    --off-white: #1a1a2e;
+    --gray-50: #16213e;
+    --gray-100: #1a1a2e;
+    --gray-200: #2d2d44;
+    --gray-300: #404060;
+    --gray-800: #e0e0e0;
+    --gray-900: #ffffff;
+    background: #0f0f1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode::before {
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(100, 150, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at 90% 80%, rgba(255, 100, 100, 0.05) 1px, transparent 1px);
+}
+
+body.dark-mode .navbar {
+    background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 50%, #2d2d44 100%);
+}
+
+body.dark-mode .section,
+body.dark-mode .info-card,
+body.dark-mode .quick-card,
+body.dark-mode .tip-card,
+body.dark-mode .prep-card,
+body.dark-mode .flashcard-front,
+body.dark-mode .flashcard-back,
+body.dark-mode .quiz-setup .setup-card,
+body.dark-mode .quiz-question-card,
+body.dark-mode .exam-info-card,
+body.dark-mode .exam-question-card,
+body.dark-mode .branch-card,
+body.dark-mode .principle-card,
+body.dark-mode .rights-card,
+body.dark-mode .key-figure,
+body.dark-mode .founder-card,
+body.dark-mode .symbol-card,
+body.dark-mode .holiday-card,
+body.dark-mode .progress-card,
+body.dark-mode .game-card,
+body.dark-mode .reading-card,
+body.dark-mode .writing-card,
+body.dark-mode .amendment-card,
+body.dark-mode .president-card,
+body.dark-mode .vocab-card,
+body.dark-mode .process-step-card,
+body.dark-mode .interview-tip-card {
+    background: #1a1a2e;
+    border-color: #2d2d44;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #2d2d44;
+    border-color: #404060;
+    color: #e0e0e0;
+}
+
+body.dark-mode .footer {
+    background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 100%);
+}
+
+/* =====================================================
+   NAVIGATION CONTROLS
+   ===================================================== */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 1rem;
+}
+
+.dark-mode-btn,
+.audio-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-btn:hover,
+.audio-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.audio-btn.active {
+    background: var(--success);
+}
+
+/* =====================================================
+   GAMES SECTION
+   ===================================================== */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.game-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--royal-blue);
+}
+
+.game-card.daily-challenge {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    color: var(--navy-dark);
+}
+
+.game-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.game-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--navy);
+}
+
+.game-card.daily-challenge h3 {
+    color: var(--navy-dark);
+}
+
+.game-card p {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+.game-stats {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+}
+
+.game-stats span {
+    font-weight: 600;
+}
+
+/* Speed Challenge */
+.speed-header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+    border-radius: var(--radius-lg);
+    color: white;
+}
+
+.speed-timer,
+.speed-score {
+    text-align: center;
+}
+
+.timer-label,
+.score-label {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.timer-value,
+.score-value {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.timer-value.warning {
+    color: var(--warning);
+}
+
+.timer-value.danger {
+    color: var(--danger);
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.speed-question-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+}
+
+.speed-question {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--navy);
+}
+
+.speed-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+}
+
+.speed-input:focus {
+    outline: none;
+    border-color: var(--royal-blue);
+}
+
+.speed-feedback {
+    padding: 1rem;
+    border-radius: var(--radius);
+    text-align: center;
+    font-weight: 600;
+}
+
+.speed-feedback.correct {
+    background: var(--success-light);
+    color: white;
+}
+
+.speed-feedback.incorrect {
+    background: var(--danger);
+    color: white;
+}
+
+/* Matching Game */
+.matching-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: var(--navy);
+    color: white;
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+}
+
+.matching-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.match-card {
+    aspect-ratio: 1;
+    background: var(--navy);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: white;
+}
+
+.match-card:hover {
+    transform: scale(1.05);
+}
+
+.match-card.flipped {
+    background: var(--white);
+    color: var(--navy);
+    border: 2px solid var(--navy);
+}
+
+.match-card.matched {
+    background: var(--success);
+    color: white;
+    cursor: default;
+}
+
+.match-card.selected {
+    border: 3px solid var(--gold);
+}
+
+/* Fill in the Blank */
+.fill-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: var(--navy);
+    color: white;
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+}
+
+.fill-question-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.fill-sentence {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.fill-blank {
+    display: inline-block;
+    border-bottom: 3px solid var(--navy);
+    min-width: 150px;
+    margin: 0 0.5rem;
+}
+
+.fill-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.fill-feedback {
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-top: 1rem;
+}
+
+/* Achievements */
+.achievements-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--gray-200);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.achievement-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border: 2px solid var(--gray-200);
+    transition: var(--transition);
+}
+
+.achievement-card.locked {
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+.achievement-card.unlocked {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, #fff9e6 0%, #fff 100%);
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+}
+
+.achievement-desc {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+.achievement-points {
+    font-size: 0.8rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* Leaderboard */
+.leaderboard-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--gray-200);
+}
+
+.leaderboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.lb-stat {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    text-align: center;
+    color: white;
+}
+
+.lb-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.lb-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* =====================================================
+   ENGLISH TEST SECTION
+   ===================================================== */
+.english-info {
+    margin-bottom: 2rem;
+}
+
+.english-info .info-box {
+    background: var(--pale-blue);
+    border: 2px solid var(--royal-blue);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+}
+
+.english-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.english-tab {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--navy);
+    background: var(--white);
+    color: var(--navy);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.english-tab:hover {
+    background: var(--pale-blue);
+}
+
+.english-tab.active {
+    background: var(--navy);
+    color: white;
+}
+
+.english-panel {
+    display: none;
+}
+
+.english-panel.active {
+    display: block;
+}
+
+.reading-controls,
+.writing-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.reading-card,
+.writing-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.sentence-display {
+    font-size: 1.75rem;
+    line-height: 1.6;
+    padding: 2rem;
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    color: var(--navy);
+}
+
+.reading-actions,
+.writing-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.audio-btn-large {
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+}
+
+.reading-words {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: var(--pale-blue);
+    border-radius: var(--radius);
+}
+
+.word-item {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+}
+
+.writing-prompt {
+    margin-bottom: 1.5rem;
+}
+
+.play-hint {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    margin-top: 0.5rem;
+}
+
+.writing-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.writing-feedback {
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-top: 1rem;
+}
+
+.writing-feedback.correct {
+    background: var(--success-light);
+    color: white;
+}
+
+.writing-feedback.incorrect {
+    background: var(--pale-red);
+    color: var(--crimson);
+}
+
+.all-sentences {
+    margin-top: 2rem;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+}
+
+.sentence-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sentence-item:last-child {
+    border-bottom: none;
+}
+
+/* Vocabulary Lists */
+.vocab-category {
+    margin-bottom: 2rem;
+}
+
+.vocab-category h4 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--royal-blue);
+}
+
+.vocab-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.vocab-word {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--pale-blue);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: var(--navy);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.vocab-word:hover {
+    background: var(--royal-blue);
+    color: white;
+}
+
+/* =====================================================
+   AMENDMENTS SECTION
+   ===================================================== */
+.amendments-filter {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.amendment-filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--navy);
+    background: var(--white);
+    color: var(--navy);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.amendment-filter-btn:hover {
+    background: var(--pale-blue);
+}
+
+.amendment-filter-btn.active {
+    background: var(--navy);
+    color: white;
+}
+
+.amendments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.amendment-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border-left: 5px solid var(--navy);
+}
+
+.amendment-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.amendment-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.amendment-title {
+    flex: 1;
+    margin-left: 1rem;
+    font-weight: 600;
+}
+
+.amendment-year {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.amendment-body {
+    padding: 1.5rem;
+}
+
+.amendment-text {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: var(--radius);
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.amendment-explanation {
+    margin-bottom: 1rem;
+}
+
+.amendment-explanation h5 {
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.amendment-mnemonic {
+    background: var(--gold-light);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    color: var(--navy-dark);
+}
+
+.amendments-quiz {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--pale-blue) 0%, var(--light-blue) 100%);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+/* =====================================================
+   PRESIDENTS SECTION
+   ===================================================== */
+.presidents-search {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.presidents-timeline {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.timeline-era {
+    flex-shrink: 0;
+    padding: 0.75rem 1.5rem;
+    background: var(--navy);
+    color: white;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.timeline-era:hover,
+.timeline-era.active {
+    background: var(--patriot-red);
+}
+
+.presidents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.president-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.president-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.president-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+    color: white;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.president-number {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.president-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.president-years {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.president-body {
+    padding: 1.25rem;
+}
+
+.president-party {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.president-party.republican {
+    background: var(--pale-red);
+    color: var(--crimson);
+}
+
+.president-party.democratic {
+    background: var(--pale-blue);
+    color: var(--navy);
+}
+
+.president-party.other {
+    background: var(--gray-200);
+    color: var(--gray-700);
+}
+
+.president-facts {
+    list-style: none;
+}
+
+.president-facts li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--gray-600);
+}
+
+.president-facts li::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+.presidents-quiz {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--pale-blue) 0%, var(--light-blue) 100%);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+/* =====================================================
+   NATURALIZATION PROCESS SECTION
+   ===================================================== */
+.process-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.process-tab {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--navy);
+    background: var(--white);
+    color: var(--navy);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.process-tab:hover {
+    background: var(--pale-blue);
+}
+
+.process-tab.active {
+    background: var(--navy);
+    color: white;
+}
+
+.process-panel {
+    display: none;
+}
+
+.process-panel.active {
+    display: block;
+}
+
+.process-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.process-step-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: flex;
+}
+
+.step-number {
+    width: 80px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.step-content h4 {
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.step-content p {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+.step-tips {
+    background: var(--pale-blue);
+    padding: 1rem;
+    border-radius: var(--radius);
+}
+
+.step-tips h5 {
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.step-tips ul {
+    margin-left: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--gray-600);
+}
+
+/* N-400 Guide */
+.n400-parts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.n400-part {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    border-left: 4px solid var(--royal-blue);
+    box-shadow: var(--shadow-sm);
+}
+
+.n400-part h5 {
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.n400-part p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+}
+
+.n400-tips {
+    background: var(--pale-blue);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+}
+
+.n400-tips h4 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+}
+
+.n400-tips ul {
+    margin-left: 1.5rem;
+}
+
+.n400-tips li {
+    margin-bottom: 0.5rem;
+}
+
+/* Document Checklist */
+.checklist-section {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.checklist-section h4 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-blue);
+}
+
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.checklist-item:hover {
+    background: var(--pale-blue);
+}
+
+.checklist-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checklist-item input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: var(--gray-400);
+}
+
+/* Interview Tips */
+.interview-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.interview-tip-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.interview-tip-card h4 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--royal-blue);
+}
+
+.interview-tip-card ul {
+    margin-left: 1.25rem;
+}
+
+.interview-tip-card li {
+    margin-bottom: 0.5rem;
+    color: var(--gray-600);
+}
+
+.oath-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--gray-200);
+}
+
+.oath-section h4 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+}
+
+.oath-text {
+    background: linear-gradient(135deg, var(--pale-blue) 0%, var(--white) 100%);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border-left: 5px solid var(--patriot-red);
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--gray-700);
+}
+
+/* =====================================================
+   VOCABULARY BUILDER SECTION
+   ===================================================== */
+.vocab-search {
+    margin-bottom: 2rem;
+}
+
+.vocab-builder {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.vocab-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--royal-blue);
+    transition: var(--transition);
+}
+
+.vocab-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.vocab-term-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+}
+
+.vocab-pronunciation-text {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+}
+
+.vocab-definition-text {
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.vocab-practice {
+    background: var(--pale-blue);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.vocab-practice h3 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+}
+
+.vocab-practice-modes {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Vocabulary Flashcard Mode */
+.vocab-mode {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.vocab-flashcard {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 0 auto 2rem;
+    perspective: 1000px;
+}
+
+.vocab-flashcard-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.vocab-flashcard.flipped .vocab-flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.vocab-flashcard-front,
+.vocab-flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.vocab-flashcard-front {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+    color: white;
+}
+
+.vocab-flashcard-back {
+    background: var(--white);
+    transform: rotateY(180deg);
+}
+
+.vocab-term {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.vocab-pronunciation {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.vocab-definition {
+    font-size: 1.25rem;
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.vocab-nav {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+#vocab-counter {
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.audio-btn-small {
+    padding: 0.5rem 1rem;
+}
+
+/* =====================================================
+   RESPONSIVE UPDATES FOR NEW SECTIONS
+   ===================================================== */
+@media (max-width: 768px) {
+    .nav-controls {
+        display: none;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .matching-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .speed-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .english-tabs,
+    .process-tabs,
+    .amendments-filter {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+    }
+
+    .english-tab,
+    .process-tab,
+    .amendment-filter-btn {
+        white-space: nowrap;
+    }
+
+    .presidents-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-step-card {
+        flex-direction: column;
+    }
+
+    .step-number {
+        width: 100%;
+        height: 60px;
+    }
+
+    .interview-tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vocab-flashcard {
+        height: 250px;
+    }
+
+    .vocab-term {
+        font-size: 1.5rem;
+    }
+}
+
+/* =====================================================
+   HIDDEN UTILITY CLASS
+   ===================================================== */
+.hidden {
+    display: none !important;
+}
+
+.game-active {
+    margin-top: 2rem;
+}
