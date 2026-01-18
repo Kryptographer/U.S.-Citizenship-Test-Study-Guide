@@ -189,10 +189,20 @@
             <a href="#" data-section="flashcards" class="nav-link">Flash Cards</a>
             <a href="#" data-section="quiz" class="nav-link">Quiz</a>
             <a href="#" data-section="exam" class="nav-link">Practice Exam</a>
+            <a href="#" data-section="games" class="nav-link">Games</a>
             <a href="#" data-section="study" class="nav-link">Study Guide</a>
+            <a href="#" data-section="english" class="nav-link">English Test</a>
             <a href="#" data-section="government" class="nav-link">Government</a>
+            <a href="#" data-section="amendments" class="nav-link">Amendments</a>
+            <a href="#" data-section="presidents" class="nav-link">Presidents</a>
             <a href="#" data-section="history" class="nav-link">History</a>
+            <a href="#" data-section="process" class="nav-link">Process</a>
+            <a href="#" data-section="vocabulary" class="nav-link">Vocabulary</a>
             <a href="#" data-section="progress" class="nav-link">Progress</a>
+        </div>
+        <div class="nav-controls">
+            <button id="dark-mode-toggle" class="dark-mode-btn" title="Toggle Dark Mode">🌙</button>
+            <button id="audio-toggle" class="audio-btn" title="Text-to-Speech">🔊</button>
         </div>
         <button class="mobile-menu-btn">☰</button>
     </nav>
@@ -237,10 +247,30 @@
                         <h3>Practice Exam</h3>
                         <p>Simulate the real test with 10 random questions</p>
                     </div>
+                    <div class="quick-card" data-goto="games">
+                        <div class="quick-icon">🎮</div>
+                        <h3>Learning Games</h3>
+                        <p>Speed challenges, matching games, and daily challenges</p>
+                    </div>
+                    <div class="quick-card" data-goto="english">
+                        <div class="quick-icon">📖</div>
+                        <h3>English Test</h3>
+                        <p>Reading and writing practice with audio support</p>
+                    </div>
                     <div class="quick-card" data-goto="study">
                         <div class="quick-icon">📚</div>
                         <h3>Study Guide</h3>
                         <p>Browse all questions organized by topic</p>
+                    </div>
+                    <div class="quick-card" data-goto="amendments">
+                        <div class="quick-icon">📜</div>
+                        <h3>27 Amendments</h3>
+                        <p>Complete guide to all Constitutional amendments</p>
+                    </div>
+                    <div class="quick-card" data-goto="presidents">
+                        <div class="quick-icon">🏛️</div>
+                        <h3>All Presidents</h3>
+                        <p>Every U.S. President from Washington to present</p>
                     </div>
                 </div>
             </div>
@@ -1418,6 +1448,550 @@
                 <button id="export-progress" class="btn btn-secondary">Export Progress</button>
             </div>
         </section>
+
+        <!-- Games Section -->
+        <section id="games" class="section">
+            <div class="section-header">
+                <h1>Learning Games</h1>
+                <p>Fun interactive ways to master the citizenship test</p>
+            </div>
+
+            <div class="games-grid">
+                <!-- Speed Challenge -->
+                <div class="game-card" id="speed-challenge-card">
+                    <div class="game-icon">⚡</div>
+                    <h3>Speed Challenge</h3>
+                    <p>Answer as many questions correctly as you can in 60 seconds!</p>
+                    <div class="game-stats">
+                        <span>Best Score: <span id="speed-best-score">0</span></span>
+                    </div>
+                    <button class="btn btn-primary" id="start-speed-challenge">Start Challenge</button>
+                </div>
+
+                <!-- Matching Game -->
+                <div class="game-card" id="matching-game-card">
+                    <div class="game-icon">🎯</div>
+                    <h3>Matching Game</h3>
+                    <p>Match questions to their correct answers as fast as you can!</p>
+                    <div class="game-stats">
+                        <span>Best Time: <span id="matching-best-time">--:--</span></span>
+                    </div>
+                    <button class="btn btn-primary" id="start-matching-game">Play Now</button>
+                </div>
+
+                <!-- Fill in the Blank -->
+                <div class="game-card" id="fill-blank-card">
+                    <div class="game-icon">✏️</div>
+                    <h3>Fill in the Blank</h3>
+                    <p>Complete sentences with missing key words!</p>
+                    <div class="game-stats">
+                        <span>Accuracy: <span id="fill-accuracy">0%</span></span>
+                    </div>
+                    <button class="btn btn-primary" id="start-fill-blank">Start</button>
+                </div>
+
+                <!-- Daily Challenge -->
+                <div class="game-card daily-challenge" id="daily-challenge-card">
+                    <div class="game-icon">🏆</div>
+                    <h3>Daily Challenge</h3>
+                    <p id="daily-challenge-desc">Complete today's challenge to earn bonus points!</p>
+                    <div class="game-stats">
+                        <span>Streak: <span id="daily-streak">0</span> days</span>
+                    </div>
+                    <button class="btn btn-primary" id="start-daily-challenge">Accept Challenge</button>
+                </div>
+            </div>
+
+            <!-- Speed Challenge Active -->
+            <div id="speed-challenge-active" class="game-active hidden">
+                <div class="speed-header">
+                    <div class="speed-timer">
+                        <span class="timer-label">Time Left</span>
+                        <span class="timer-value" id="speed-timer">60</span>
+                    </div>
+                    <div class="speed-score">
+                        <span class="score-label">Score</span>
+                        <span class="score-value" id="speed-score">0</span>
+                    </div>
+                </div>
+                <div class="speed-question-card">
+                    <p class="speed-question" id="speed-question"></p>
+                    <input type="text" id="speed-answer" class="speed-input" placeholder="Type your answer..." autocomplete="off">
+                    <button class="btn btn-primary" id="speed-submit">Submit</button>
+                </div>
+                <div class="speed-feedback" id="speed-feedback"></div>
+            </div>
+
+            <!-- Matching Game Active -->
+            <div id="matching-game-active" class="game-active hidden">
+                <div class="matching-header">
+                    <div class="matching-timer">Time: <span id="matching-timer">0:00</span></div>
+                    <div class="matching-moves">Matches: <span id="matching-moves">0</span>/8</div>
+                </div>
+                <div class="matching-board" id="matching-board">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+
+            <!-- Fill in Blank Active -->
+            <div id="fill-blank-active" class="game-active hidden">
+                <div class="fill-header">
+                    <span>Question <span id="fill-current">1</span>/10</span>
+                    <span>Correct: <span id="fill-correct">0</span></span>
+                </div>
+                <div class="fill-question-card">
+                    <p class="fill-sentence" id="fill-sentence"></p>
+                    <input type="text" id="fill-answer" class="fill-input" placeholder="Type the missing word...">
+                    <button class="btn btn-primary" id="fill-submit">Check Answer</button>
+                </div>
+                <div class="fill-feedback" id="fill-feedback"></div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="achievements-section">
+                <h2>Achievements</h2>
+                <div class="achievements-grid" id="achievements-grid">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="leaderboard-section">
+                <h2>Your Stats</h2>
+                <div class="leaderboard-stats">
+                    <div class="lb-stat">
+                        <span class="lb-value" id="total-points">0</span>
+                        <span class="lb-label">Total Points</span>
+                    </div>
+                    <div class="lb-stat">
+                        <span class="lb-value" id="current-level">1</span>
+                        <span class="lb-label">Level</span>
+                    </div>
+                    <div class="lb-stat">
+                        <span class="lb-value" id="achievements-earned">0</span>
+                        <span class="lb-label">Achievements</span>
+                    </div>
+                    <div class="lb-stat">
+                        <span class="lb-value" id="study-streak">0</span>
+                        <span class="lb-label">Day Streak</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- English Test Section -->
+        <section id="english" class="section">
+            <div class="section-header">
+                <h1>English Test Practice</h1>
+                <p>Prepare for the reading and writing portions of the naturalization test</p>
+            </div>
+
+            <div class="english-info">
+                <div class="info-box">
+                    <h3>About the English Test</h3>
+                    <p>During your interview, you must demonstrate the ability to read, write, and speak basic English. The USCIS officer will test:</p>
+                    <ul>
+                        <li><strong>Reading:</strong> Read 1 out of 3 sentences correctly</li>
+                        <li><strong>Writing:</strong> Write 1 out of 3 sentences correctly</li>
+                        <li><strong>Speaking:</strong> Demonstrated during the interview</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="english-tabs">
+                <button class="english-tab active" data-tab="reading">Reading Practice</button>
+                <button class="english-tab" data-tab="writing">Writing Practice</button>
+                <button class="english-tab" data-tab="vocabulary-list">Vocabulary Lists</button>
+            </div>
+
+            <div class="english-content">
+                <!-- Reading Practice -->
+                <div class="english-panel active" id="panel-reading">
+                    <h3>Reading Practice</h3>
+                    <p>Practice reading these sentences out loud. Click the speaker icon to hear the pronunciation.</p>
+
+                    <div class="reading-controls">
+                        <button class="btn btn-secondary" id="random-reading">Random Sentence</button>
+                        <button class="btn btn-secondary" id="show-all-reading">Show All</button>
+                    </div>
+
+                    <div class="reading-card" id="reading-practice-card">
+                        <div class="sentence-display" id="reading-sentence">
+                            Click "Random Sentence" to start practicing
+                        </div>
+                        <div class="reading-actions">
+                            <button class="btn btn-outline audio-btn-large" id="read-aloud">🔊 Read Aloud</button>
+                            <button class="btn btn-outline" id="show-reading-answer">Show Words</button>
+                        </div>
+                        <div class="reading-words hidden" id="reading-words">
+                            <!-- Word breakdown shown here -->
+                        </div>
+                    </div>
+
+                    <div class="all-sentences hidden" id="all-reading-sentences">
+                        <!-- All sentences listed -->
+                    </div>
+                </div>
+
+                <!-- Writing Practice -->
+                <div class="english-panel" id="panel-writing">
+                    <h3>Writing Practice</h3>
+                    <p>Listen to the sentence and practice writing it down. Check your spelling carefully!</p>
+
+                    <div class="writing-controls">
+                        <button class="btn btn-secondary" id="random-writing">New Sentence</button>
+                        <button class="btn btn-secondary" id="show-all-writing">Show All</button>
+                    </div>
+
+                    <div class="writing-card" id="writing-practice-card">
+                        <div class="writing-prompt">
+                            <button class="btn btn-primary audio-btn-large" id="play-writing-audio">🔊 Play Sentence</button>
+                            <span class="play-hint">Click to hear the sentence, then write it below</span>
+                        </div>
+                        <textarea id="writing-input" class="writing-input" placeholder="Write the sentence here..." rows="3"></textarea>
+                        <div class="writing-actions">
+                            <button class="btn btn-primary" id="check-writing">Check Answer</button>
+                            <button class="btn btn-outline" id="show-writing-answer">Show Answer</button>
+                        </div>
+                        <div class="writing-feedback" id="writing-feedback"></div>
+                    </div>
+
+                    <div class="all-sentences hidden" id="all-writing-sentences">
+                        <!-- All sentences listed -->
+                    </div>
+                </div>
+
+                <!-- Vocabulary Lists -->
+                <div class="english-panel" id="panel-vocabulary-list">
+                    <h3>USCIS Vocabulary Lists</h3>
+                    <p>These are the official vocabulary words used in the reading and writing tests.</p>
+
+                    <div class="vocab-category">
+                        <h4>Civics Words</h4>
+                        <div class="vocab-words" id="vocab-civics">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="vocab-category">
+                        <h4>People</h4>
+                        <div class="vocab-words" id="vocab-people">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="vocab-category">
+                        <h4>Places</h4>
+                        <div class="vocab-words" id="vocab-places">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="vocab-category">
+                        <h4>Holidays</h4>
+                        <div class="vocab-words" id="vocab-holidays">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="vocab-category">
+                        <h4>Question Words</h4>
+                        <div class="vocab-words" id="vocab-questions">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="vocab-category">
+                        <h4>Verbs</h4>
+                        <div class="vocab-words" id="vocab-verbs">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="vocab-category">
+                        <h4>Other Important Words</h4>
+                        <div class="vocab-words" id="vocab-other">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Constitutional Amendments Section -->
+        <section id="amendments" class="section">
+            <div class="section-header">
+                <h1>All 27 Constitutional Amendments</h1>
+                <p>Complete guide to every amendment with explanations</p>
+            </div>
+
+            <div class="amendments-filter">
+                <button class="amendment-filter-btn active" data-filter="all">All (27)</button>
+                <button class="amendment-filter-btn" data-filter="bill-of-rights">Bill of Rights (1-10)</button>
+                <button class="amendment-filter-btn" data-filter="reconstruction">Reconstruction (13-15)</button>
+                <button class="amendment-filter-btn" data-filter="voting">Voting Rights</button>
+                <button class="amendment-filter-btn" data-filter="modern">20th Century</button>
+            </div>
+
+            <div class="amendments-list" id="amendments-list">
+                <!-- Generated by JS from data-enhanced.js -->
+            </div>
+
+            <div class="amendments-quiz">
+                <h3>Test Your Knowledge</h3>
+                <p>How well do you know the amendments?</p>
+                <button class="btn btn-primary" id="start-amendments-quiz">Take Amendments Quiz</button>
+            </div>
+        </section>
+
+        <!-- Presidents Section -->
+        <section id="presidents" class="section">
+            <div class="section-header">
+                <h1>All U.S. Presidents</h1>
+                <p>Complete list of all 47 presidents from Washington to present</p>
+            </div>
+
+            <div class="presidents-search">
+                <input type="text" id="president-search" placeholder="Search presidents..." class="search-input">
+                <select id="president-filter">
+                    <option value="all">All Presidents</option>
+                    <option value="founding">Founding Era (1-6)</option>
+                    <option value="antebellum">Antebellum (7-15)</option>
+                    <option value="civil-war">Civil War Era (16-18)</option>
+                    <option value="gilded">Gilded Age (19-25)</option>
+                    <option value="modern">Modern Era (26-47)</option>
+                </select>
+            </div>
+
+            <div class="presidents-timeline" id="presidents-timeline">
+                <!-- Generated by JS -->
+            </div>
+
+            <div class="presidents-grid" id="presidents-grid">
+                <!-- Generated by JS from data-enhanced.js -->
+            </div>
+
+            <div class="presidents-quiz">
+                <h3>Presidential Trivia</h3>
+                <button class="btn btn-primary" id="start-presidents-quiz">Take Presidents Quiz</button>
+            </div>
+        </section>
+
+        <!-- Naturalization Process Section -->
+        <section id="process" class="section">
+            <div class="section-header">
+                <h1>Naturalization Process</h1>
+                <p>Step-by-step guide from green card to citizenship</p>
+            </div>
+
+            <div class="process-tabs">
+                <button class="process-tab active" data-tab="steps">Process Steps</button>
+                <button class="process-tab" data-tab="n400">N-400 Form Guide</button>
+                <button class="process-tab" data-tab="documents">Document Checklist</button>
+                <button class="process-tab" data-tab="interview">Interview Tips</button>
+            </div>
+
+            <div class="process-content">
+                <!-- Process Steps -->
+                <div class="process-panel active" id="process-steps">
+                    <div class="process-timeline" id="naturalization-timeline">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+
+                <!-- N-400 Guide -->
+                <div class="process-panel" id="process-n400">
+                    <h3>Understanding Form N-400</h3>
+                    <p>The Application for Naturalization (Form N-400) has 12 main parts. Here's what each section covers:</p>
+
+                    <div class="n400-parts" id="n400-parts">
+                        <!-- Generated by JS -->
+                    </div>
+
+                    <div class="n400-tips">
+                        <h4>Important Tips for Form N-400</h4>
+                        <ul>
+                            <li>Use black ink only</li>
+                            <li>Answer every question (write "N/A" if not applicable)</li>
+                            <li>Be completely honest - lies can result in denial or deportation</li>
+                            <li>Double-check all dates and addresses</li>
+                            <li>Keep copies of everything you submit</li>
+                            <li>Current filing fee is $760 (check USCIS for updates)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Document Checklist -->
+                <div class="process-panel" id="process-documents">
+                    <h3>Document Checklist for Interview</h3>
+
+                    <div class="checklist-section">
+                        <h4>Required Documents</h4>
+                        <div class="checklist">
+                            <label class="checklist-item">
+                                <input type="checkbox"> Appointment Notice (Form I-797C)
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Permanent Resident Card (Green Card)
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> State-issued ID or Driver's License
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Current Passport and all expired passports
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Two passport-style photos (if requested)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-section">
+                        <h4>If Married to U.S. Citizen (3-year residency)</h4>
+                        <div class="checklist">
+                            <label class="checklist-item">
+                                <input type="checkbox"> Spouse's proof of citizenship
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Marriage certificate
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Proof of termination of prior marriages (if any)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-section">
+                        <h4>Additional Documents (If Applicable)</h4>
+                        <div class="checklist">
+                            <label class="checklist-item">
+                                <input type="checkbox"> Court records for any arrests
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Tax returns for past 5 years
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Selective Service registration (men 18-26)
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Child support payment records
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox"> Medical disability documentation (if requesting accommodations)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interview Tips -->
+                <div class="process-panel" id="process-interview">
+                    <h3>Interview Day Success Tips</h3>
+
+                    <div class="interview-tips-grid">
+                        <div class="interview-tip-card">
+                            <h4>Before the Interview</h4>
+                            <ul>
+                                <li>Review your N-400 application thoroughly</li>
+                                <li>Practice the 100 civics questions</li>
+                                <li>Practice reading and writing in English</li>
+                                <li>Prepare all required documents</li>
+                                <li>Get a good night's sleep</li>
+                                <li>Plan to arrive 15-30 minutes early</li>
+                            </ul>
+                        </div>
+
+                        <div class="interview-tip-card">
+                            <h4>What to Wear</h4>
+                            <ul>
+                                <li>Dress professionally and conservatively</li>
+                                <li>Business casual is appropriate</li>
+                                <li>Avoid political or controversial clothing</li>
+                                <li>Be neat and well-groomed</li>
+                            </ul>
+                        </div>
+
+                        <div class="interview-tip-card">
+                            <h4>During the Interview</h4>
+                            <ul>
+                                <li>Be polite and respectful</li>
+                                <li>Listen carefully to each question</li>
+                                <li>Answer honestly - never lie</li>
+                                <li>Ask for clarification if needed</li>
+                                <li>Speak clearly and at a normal pace</li>
+                                <li>Bring an interpreter if needed (and allowed)</li>
+                            </ul>
+                        </div>
+
+                        <div class="interview-tip-card">
+                            <h4>Common Interview Questions</h4>
+                            <ul>
+                                <li>What is your current address?</li>
+                                <li>How long have you lived there?</li>
+                                <li>Where do you work?</li>
+                                <li>Have you traveled outside the U.S.?</li>
+                                <li>Have you ever been arrested?</li>
+                                <li>Are you willing to take the Oath of Allegiance?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="oath-section">
+                        <h4>The Oath of Allegiance</h4>
+                        <p>If your application is approved, you'll take this oath at your ceremony:</p>
+                        <blockquote class="oath-text">
+                            "I hereby declare, on oath, that I absolutely and entirely renounce and abjure all allegiance and fidelity to any foreign prince, potentate, state, or sovereignty, of whom or which I have heretofore been a subject or citizen; that I will support and defend the Constitution and laws of the United States of America against all enemies, foreign and domestic; that I will bear true faith and allegiance to the same; that I will bear arms on behalf of the United States when required by the law; that I will perform noncombatant service in the Armed Forces of the United States when required by the law; that I will perform work of national importance under civilian direction when required by the law; and that I take this obligation freely, without any mental reservation or purpose of evasion; so help me God."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vocabulary Builder Section -->
+        <section id="vocabulary" class="section">
+            <div class="section-header">
+                <h1>Citizenship Vocabulary Builder</h1>
+                <p>Learn key terms with definitions and pronunciation guides</p>
+            </div>
+
+            <div class="vocab-search">
+                <input type="text" id="vocab-search" placeholder="Search vocabulary..." class="search-input">
+            </div>
+
+            <div class="vocab-builder" id="vocab-builder">
+                <!-- Generated by JS from citizenshipVocabulary -->
+            </div>
+
+            <div class="vocab-practice">
+                <h3>Practice Vocabulary</h3>
+                <div class="vocab-practice-modes">
+                    <button class="btn btn-primary" id="vocab-flashcards">Vocabulary Flashcards</button>
+                    <button class="btn btn-secondary" id="vocab-quiz">Vocabulary Quiz</button>
+                    <button class="btn btn-secondary" id="vocab-match">Matching Game</button>
+                </div>
+            </div>
+
+            <!-- Vocabulary Flashcard Mode -->
+            <div id="vocab-flashcard-mode" class="vocab-mode hidden">
+                <div class="vocab-flashcard" id="vocab-card">
+                    <div class="vocab-flashcard-inner">
+                        <div class="vocab-flashcard-front">
+                            <span class="vocab-term" id="vocab-term"></span>
+                            <span class="vocab-pronunciation" id="vocab-pronunciation"></span>
+                            <button class="btn btn-outline audio-btn-small" id="vocab-audio">🔊</button>
+                        </div>
+                        <div class="vocab-flashcard-back">
+                            <span class="vocab-definition" id="vocab-definition"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vocab-nav">
+                    <button class="btn btn-secondary" id="vocab-prev">← Previous</button>
+                    <span id="vocab-counter">1/23</span>
+                    <button class="btn btn-primary" id="vocab-next">Next →</button>
+                </div>
+                <button class="btn btn-outline" id="close-vocab-mode">Back to List</button>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -1435,6 +2009,8 @@
 
     <script src="questions.js"></script>
     <script src="officials.js"></script>
+    <script src="data-enhanced.js"></script>
     <script src="app.js"></script>
+    <script src="app-enhanced.js"></script>
 </body>
 </html>
