@@ -28,6 +28,17 @@ A free, interactive study tool to help you prepare for the USCIS Naturalization 
 
 ---
 
+## Recent Updates (January 2026)
+
+- **Government Officials Updated** - All current U.S. officials data verified and updated for January 2026
+- **Flashcard Text-to-Speech Button** - New speaker button on flashcards for instant audio playback
+- **Improved Dark Mode Readability** - Enhanced contrast and visibility across all dark mode interfaces
+- **Modern UI Enhancements** - Smooth animations and polished visual effects throughout the app
+- **Comprehensive Study Guide** - 8+ new sections with expanded learning resources
+- **SEO Optimization** - Improved discoverability for those searching for citizenship test resources
+
+---
+
 ## Getting Started
 
 ### Option 1: Open Directly in Your Browser
