@@ -172,6 +172,8 @@ function initFlashcards() {
     const prevBtn = document.getElementById('flashcard-prev');
     const nextBtn = document.getElementById('flashcard-next');
     const markBtn = document.getElementById('flashcard-mark');
+    const ttsQuestionBtn = document.getElementById('flashcard-tts-question');
+    const ttsAnswerBtn = document.getElementById('flashcard-tts-answer');
 
     // Populate categories
     if (categorySelect) {
@@ -200,6 +202,28 @@ function initFlashcards() {
     if (prevBtn) prevBtn.addEventListener('click', () => navigateFlashcard(-1));
     if (nextBtn) nextBtn.addEventListener('click', () => navigateFlashcard(1));
     if (markBtn) markBtn.addEventListener('click', toggleMarkCurrentFlashcard);
+
+    // Text-to-speech buttons
+    if (ttsQuestionBtn) {
+        ttsQuestionBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent card flip
+            const question = AppState.flashcard.questions[AppState.flashcard.currentIndex];
+            if (question) {
+                forceSpeak(question.question);
+            }
+        });
+    }
+
+    if (ttsAnswerBtn) {
+        ttsAnswerBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent card flip
+            const question = AppState.flashcard.questions[AppState.flashcard.currentIndex];
+            if (question) {
+                const answers = question.isVariable ? getCurrentAnswers(question.id, AppState.selectedState) : question.answers;
+                forceSpeak(answers.join('. '));
+            }
+        });
+    }
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {

@@ -1033,6 +1033,36 @@ body::before {
     opacity: 0.6;
 }
 
+.flashcard-tts-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.flashcard-front .flashcard-tts-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--white);
+}
+
+.flashcard-front .flashcard-tts-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: var(--white);
+}
+
+.flashcard-back .flashcard-tts-btn {
+    background: transparent;
+    border-color: var(--navy);
+    color: var(--navy);
+}
+
+.flashcard-back .flashcard-tts-btn:hover {
+    background: var(--navy);
+    color: var(--white);
+}
+
 .flashcard-nav {
     display: flex;
     justify-content: center;
@@ -3356,6 +3386,28 @@ body.dark-mode .flashcard-progress {
 
 body.dark-mode .flashcard-keyboard-hint {
     color: #a0b0c8;
+}
+
+body.dark-mode .flashcard-front .flashcard-tts-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+body.dark-mode .flashcard-front .flashcard-tts-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #ffffff;
+}
+
+body.dark-mode .flashcard-back .flashcard-tts-btn {
+    background: transparent;
+    border-color: #7eb8ff;
+    color: #7eb8ff;
+}
+
+body.dark-mode .flashcard-back .flashcard-tts-btn:hover {
+    background: #7eb8ff;
+    color: #1e2840;
 }
 
 /* Dark mode vocab flashcard text */
