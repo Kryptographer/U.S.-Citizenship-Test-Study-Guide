@@ -1001,14 +1001,17 @@ body::before {
 }
 
 #flashcard-question {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    font-weight: 500;
+    font-size: 1.75rem;
+    line-height: 1.7;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 #flashcard-answer {
-    font-size: 1.25rem;
-    line-height: 1.7;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    font-weight: 600;
+    color: #1a1a2e;
 }
 
 #flashcard-answer ul {
@@ -1017,13 +1020,15 @@ body::before {
 }
 
 #flashcard-answer li {
-    padding: 0.35rem 0;
+    padding: 0.5rem 0;
+    color: #1a1a2e;
 }
 
 #flashcard-answer li::before {
     content: "✓ ";
-    color: var(--success);
+    color: #059669;
     font-weight: bold;
+    font-size: 1.2em;
 }
 
 .flip-hint {
@@ -1034,33 +1039,41 @@ body::before {
 }
 
 .flashcard-tts-btn {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
     z-index: 10;
     transition: var(--transition);
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
 }
 
 .flashcard-front .flashcard-tts-btn {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.7);
     color: var(--white);
 }
 
 .flashcard-front .flashcard-tts-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4);
     border-color: var(--white);
+    transform: scale(1.05);
 }
 
 .flashcard-back .flashcard-tts-btn {
-    background: transparent;
-    border-color: var(--navy);
-    color: var(--navy);
+    background: #1e3a5f;
+    border: 2px solid #1e3a5f;
+    color: #ffffff;
 }
 
 .flashcard-back .flashcard-tts-btn:hover {
-    background: var(--navy);
-    color: var(--white);
+    background: #0f2847;
+    border-color: #0f2847;
+    transform: scale(1.05);
 }
 
 .flashcard-nav {
@@ -3375,6 +3388,11 @@ body.dark-mode .flashcard-back .card-label {
     color: #f0f4ff;
 }
 
+body.dark-mode #flashcard-answer,
+body.dark-mode #flashcard-answer li {
+    color: #f0f4ff;
+}
+
 body.dark-mode #flashcard-answer li::before {
     color: #34d399;
 }
@@ -3400,14 +3418,15 @@ body.dark-mode .flashcard-front .flashcard-tts-btn:hover {
 }
 
 body.dark-mode .flashcard-back .flashcard-tts-btn {
-    background: transparent;
-    border-color: #7eb8ff;
-    color: #7eb8ff;
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #ffffff;
 }
 
 body.dark-mode .flashcard-back .flashcard-tts-btn:hover {
-    background: #7eb8ff;
-    color: #1e2840;
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
 }
 
 /* Dark mode vocab flashcard text */
