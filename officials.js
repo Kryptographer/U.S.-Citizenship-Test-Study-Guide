@@ -1,5 +1,5 @@
 // Current U.S. Government Officials Database
-// Last Updated: January 2025
+// Last Updated: January 2026
 // Note: This data should be updated when officials change
 
 const currentOfficials = {
@@ -136,7 +136,7 @@ const stateData = {
         capital: "Phoenix",
         governor: { name: "Katie Hobbs", party: "Democratic", termEnd: "2027" },
         senators: [
-            { name: "Kyrsten Sinema", party: "Independent", termEnd: "2025" },
+            { name: "Ruben Gallego", party: "Democratic", termEnd: "2031" },
             { name: "Mark Kelly", party: "Democratic", termEnd: "2029" }
         ]
     },
@@ -169,14 +169,14 @@ const stateData = {
         governor: { name: "Ned Lamont", party: "Democratic", termEnd: "2027" },
         senators: [
             { name: "Richard Blumenthal", party: "Democratic", termEnd: "2029" },
-            { name: "Chris Murphy", party: "Democratic", termEnd: "2025" }
+            { name: "Chris Murphy", party: "Democratic", termEnd: "2031" }
         ]
     },
     "Delaware": {
         capital: "Dover",
         governor: { name: "Matt Meyer", party: "Democratic", termEnd: "2029" },
         senators: [
-            { name: "Tom Carper", party: "Democratic", termEnd: "2025" },
+            { name: "Lisa Blunt Rochester", party: "Democratic", termEnd: "2031" },
             { name: "Chris Coons", party: "Democratic", termEnd: "2027" }
         ]
     },
@@ -184,8 +184,8 @@ const stateData = {
         capital: "Tallahassee",
         governor: { name: "Ron DeSantis", party: "Republican", termEnd: "2027" },
         senators: [
-            { name: "Marco Rubio", party: "Republican", termEnd: "2029" },
-            { name: "Rick Scott", party: "Republican", termEnd: "2025" }
+            { name: "Ashley Moody", party: "Republican", termEnd: "2029" },
+            { name: "Rick Scott", party: "Republican", termEnd: "2031" }
         ]
     },
     "Georgia": {
@@ -201,7 +201,7 @@ const stateData = {
         governor: { name: "Josh Green", party: "Democratic", termEnd: "2026" },
         senators: [
             { name: "Brian Schatz", party: "Democratic", termEnd: "2029" },
-            { name: "Mazie Hirono", party: "Democratic", termEnd: "2025" }
+            { name: "Mazie Hirono", party: "Democratic", termEnd: "2031" }
         ]
     },
     "Idaho": {
@@ -265,14 +265,14 @@ const stateData = {
         governor: { name: "Janet Mills", party: "Democratic", termEnd: "2027" },
         senators: [
             { name: "Susan Collins", party: "Republican", termEnd: "2027" },
-            { name: "Angus King", party: "Independent", termEnd: "2025" }
+            { name: "Angus King", party: "Independent", termEnd: "2031" }
         ]
     },
     "Maryland": {
         capital: "Annapolis",
         governor: { name: "Wes Moore", party: "Democratic", termEnd: "2027" },
         senators: [
-            { name: "Ben Cardin", party: "Democratic", termEnd: "2025" },
+            { name: "Angela Alsobrooks", party: "Democratic", termEnd: "2031" },
             { name: "Chris Van Hollen", party: "Democratic", termEnd: "2029" }
         ]
     },
@@ -280,7 +280,7 @@ const stateData = {
         capital: "Boston",
         governor: { name: "Maura Healey", party: "Democratic", termEnd: "2027" },
         senators: [
-            { name: "Elizabeth Warren", party: "Democratic", termEnd: "2025" },
+            { name: "Elizabeth Warren", party: "Democratic", termEnd: "2031" },
             { name: "Ed Markey", party: "Democratic", termEnd: "2027" }
         ]
     },
@@ -296,7 +296,7 @@ const stateData = {
         capital: "Saint Paul",
         governor: { name: "Tim Walz", party: "Democratic", termEnd: "2027" },
         senators: [
-            { name: "Amy Klobuchar", party: "Democratic", termEnd: "2025" },
+            { name: "Amy Klobuchar", party: "Democratic", termEnd: "2031" },
             { name: "Tina Smith", party: "Democratic", termEnd: "2027" }
         ]
     },
@@ -304,7 +304,7 @@ const stateData = {
         capital: "Jackson",
         governor: { name: "Tate Reeves", party: "Republican", termEnd: "2028" },
         senators: [
-            { name: "Roger Wicker", party: "Republican", termEnd: "2025" },
+            { name: "Roger Wicker", party: "Republican", termEnd: "2031" },
             { name: "Cindy Hyde-Smith", party: "Republican", termEnd: "2027" }
         ]
     },
@@ -312,15 +312,15 @@ const stateData = {
         capital: "Jefferson City",
         governor: { name: "Mike Kehoe", party: "Republican", termEnd: "2029" },
         senators: [
-            { name: "Josh Hawley", party: "Republican", termEnd: "2025" },
+            { name: "Josh Hawley", party: "Republican", termEnd: "2031" },
             { name: "Eric Schmitt", party: "Republican", termEnd: "2029" }
         ]
     },
     "Montana": {
         capital: "Helena",
-        governor: { name: "Greg Gianforte", party: "Republican", termEnd: "2025" },
+        governor: { name: "Greg Gianforte", party: "Republican", termEnd: "2029" },
         senators: [
-            { name: "Jon Tester", party: "Democratic", termEnd: "2025" },
+            { name: "Tim Sheehy", party: "Republican", termEnd: "2031" },
             { name: "Steve Daines", party: "Republican", termEnd: "2027" }
         ]
     },
@@ -328,7 +328,7 @@ const stateData = {
         capital: "Lincoln",
         governor: { name: "Jim Pillen", party: "Republican", termEnd: "2027" },
         senators: [
-            { name: "Deb Fischer", party: "Republican", termEnd: "2025" },
+            { name: "Deb Fischer", party: "Republican", termEnd: "2031" },
             { name: "Pete Ricketts", party: "Republican", termEnd: "2027" }
         ]
     },
@@ -337,7 +337,7 @@ const stateData = {
         governor: { name: "Joe Lombardo", party: "Republican", termEnd: "2027" },
         senators: [
             { name: "Catherine Cortez Masto", party: "Democratic", termEnd: "2029" },
-            { name: "Jacky Rosen", party: "Democratic", termEnd: "2025" }
+            { name: "Jacky Rosen", party: "Democratic", termEnd: "2031" }
         ]
     },
     "New Hampshire": {
@@ -360,7 +360,7 @@ const stateData = {
         capital: "Santa Fe",
         governor: { name: "Michelle Lujan Grisham", party: "Democratic", termEnd: "2027" },
         senators: [
-            { name: "Martin Heinrich", party: "Democratic", termEnd: "2025" },
+            { name: "Martin Heinrich", party: "Democratic", termEnd: "2031" },
             { name: "Ben Ray Luján", party: "Democratic", termEnd: "2027" }
         ]
     },
@@ -369,7 +369,7 @@ const stateData = {
         governor: { name: "Kathy Hochul", party: "Democratic", termEnd: "2027" },
         senators: [
             { name: "Chuck Schumer", party: "Democratic", termEnd: "2029" },
-            { name: "Kirsten Gillibrand", party: "Democratic", termEnd: "2025" }
+            { name: "Kirsten Gillibrand", party: "Democratic", termEnd: "2031" }
         ]
     },
     "North Carolina": {
@@ -385,15 +385,15 @@ const stateData = {
         governor: { name: "Kelly Armstrong", party: "Republican", termEnd: "2028" },
         senators: [
             { name: "John Hoeven", party: "Republican", termEnd: "2029" },
-            { name: "Kevin Cramer", party: "Republican", termEnd: "2025" }
+            { name: "Kevin Cramer", party: "Republican", termEnd: "2031" }
         ]
     },
     "Ohio": {
         capital: "Columbus",
         governor: { name: "Mike DeWine", party: "Republican", termEnd: "2027" },
         senators: [
-            { name: "Sherrod Brown", party: "Democratic", termEnd: "2025" },
-            { name: "JD Vance", party: "Republican", termEnd: "2029" }
+            { name: "Bernie Moreno", party: "Republican", termEnd: "2031" },
+            { name: "Jon Husted", party: "Republican", termEnd: "2027" }
         ]
     },
     "Oklahoma": {
@@ -416,7 +416,7 @@ const stateData = {
         capital: "Harrisburg",
         governor: { name: "Josh Shapiro", party: "Democratic", termEnd: "2027" },
         senators: [
-            { name: "Bob Casey Jr.", party: "Democratic", termEnd: "2025" },
+            { name: "Dave McCormick", party: "Republican", termEnd: "2031" },
             { name: "John Fetterman", party: "Democratic", termEnd: "2029" }
         ]
     },
@@ -425,7 +425,7 @@ const stateData = {
         governor: { name: "Dan McKee", party: "Democratic", termEnd: "2027" },
         senators: [
             { name: "Jack Reed", party: "Democratic", termEnd: "2027" },
-            { name: "Sheldon Whitehouse", party: "Democratic", termEnd: "2025" }
+            { name: "Sheldon Whitehouse", party: "Democratic", termEnd: "2031" }
         ]
     },
     "South Carolina": {
@@ -438,7 +438,7 @@ const stateData = {
     },
     "South Dakota": {
         capital: "Pierre",
-        governor: { name: "Kristi Noem", party: "Republican", termEnd: "2027" },
+        governor: { name: "Larry Rhoden", party: "Republican", termEnd: "2027" },
         senators: [
             { name: "John Thune", party: "Republican", termEnd: "2029" },
             { name: "Mike Rounds", party: "Republican", termEnd: "2027" }
@@ -448,7 +448,7 @@ const stateData = {
         capital: "Nashville",
         governor: { name: "Bill Lee", party: "Republican", termEnd: "2027" },
         senators: [
-            { name: "Marsha Blackburn", party: "Republican", termEnd: "2025" },
+            { name: "Marsha Blackburn", party: "Republican", termEnd: "2031" },
             { name: "Bill Hagerty", party: "Republican", termEnd: "2027" }
         ]
     },
@@ -457,7 +457,7 @@ const stateData = {
         governor: { name: "Greg Abbott", party: "Republican", termEnd: "2027" },
         senators: [
             { name: "John Cornyn", party: "Republican", termEnd: "2027" },
-            { name: "Ted Cruz", party: "Republican", termEnd: "2025" }
+            { name: "Ted Cruz", party: "Republican", termEnd: "2031" }
         ]
     },
     "Utah": {
@@ -465,14 +465,14 @@ const stateData = {
         governor: { name: "Spencer Cox", party: "Republican", termEnd: "2029" },
         senators: [
             { name: "Mike Lee", party: "Republican", termEnd: "2029" },
-            { name: "Mitt Romney", party: "Republican", termEnd: "2025" }
+            { name: "John Curtis", party: "Republican", termEnd: "2031" }
         ]
     },
     "Vermont": {
         capital: "Montpelier",
         governor: { name: "Phil Scott", party: "Republican", termEnd: "2027" },
         senators: [
-            { name: "Bernie Sanders", party: "Independent", termEnd: "2025" },
+            { name: "Bernie Sanders", party: "Independent", termEnd: "2031" },
             { name: "Peter Welch", party: "Democratic", termEnd: "2029" }
         ]
     },
@@ -481,7 +481,7 @@ const stateData = {
         governor: { name: "Glenn Youngkin", party: "Republican", termEnd: "2026" },
         senators: [
             { name: "Mark Warner", party: "Democratic", termEnd: "2027" },
-            { name: "Tim Kaine", party: "Democratic", termEnd: "2025" }
+            { name: "Tim Kaine", party: "Democratic", termEnd: "2031" }
         ]
     },
     "Washington": {
@@ -489,7 +489,7 @@ const stateData = {
         governor: { name: "Bob Ferguson", party: "Democratic", termEnd: "2029" },
         senators: [
             { name: "Patty Murray", party: "Democratic", termEnd: "2029" },
-            { name: "Maria Cantwell", party: "Democratic", termEnd: "2025" }
+            { name: "Maria Cantwell", party: "Democratic", termEnd: "2031" }
         ]
     },
     "West Virginia": {
@@ -505,14 +505,14 @@ const stateData = {
         governor: { name: "Tony Evers", party: "Democratic", termEnd: "2027" },
         senators: [
             { name: "Ron Johnson", party: "Republican", termEnd: "2029" },
-            { name: "Tammy Baldwin", party: "Democratic", termEnd: "2025" }
+            { name: "Tammy Baldwin", party: "Democratic", termEnd: "2031" }
         ]
     },
     "Wyoming": {
         capital: "Cheyenne",
         governor: { name: "Mark Gordon", party: "Republican", termEnd: "2027" },
         senators: [
-            { name: "John Barrasso", party: "Republican", termEnd: "2025" },
+            { name: "John Barrasso", party: "Republican", termEnd: "2031" },
             { name: "Cynthia Lummis", party: "Republican", termEnd: "2027" }
         ]
     }
