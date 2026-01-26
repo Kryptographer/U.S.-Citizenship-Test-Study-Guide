@@ -3323,6 +3323,59 @@ body.dark-mode .tip-card li {
     color: #c8d4e8;
 }
 
+/* Dark mode flashcard text - improved readability */
+body.dark-mode .flashcard-front {
+    background: linear-gradient(135deg, #1a2744 0%, #2d3a5c 100%);
+    border-color: #ff6b6b;
+}
+
+body.dark-mode .flashcard-front #flashcard-question,
+body.dark-mode .flashcard-front .card-label {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .flashcard-back {
+    background: #1e2840;
+    border-color: #34d399;
+}
+
+body.dark-mode .flashcard-back #flashcard-answer,
+body.dark-mode .flashcard-back .card-label {
+    color: #f0f4ff;
+}
+
+body.dark-mode #flashcard-answer li::before {
+    color: #34d399;
+}
+
+body.dark-mode .flashcard-progress {
+    background: #2d3a5c;
+    color: #b8d4ff;
+}
+
+body.dark-mode .flashcard-keyboard-hint {
+    color: #a0b0c8;
+}
+
+/* Dark mode vocab flashcard text */
+body.dark-mode .vocab-flashcard-front {
+    background: linear-gradient(135deg, #1a2744 0%, #2d4a6c 100%);
+}
+
+body.dark-mode .vocab-flashcard-front .vocab-term {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .vocab-flashcard-back {
+    background: #1e2840;
+}
+
+body.dark-mode .vocab-flashcard-back .vocab-definition {
+    color: #f0f4ff;
+}
+
 /* =====================================================
    NAVIGATION CONTROLS
    ===================================================== */
