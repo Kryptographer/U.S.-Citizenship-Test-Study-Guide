@@ -5321,7 +5321,10 @@ body.dyslexia-friendly li {
     .nav-link,
     .choice-btn,
     .matching-card,
-    .toggle-switch {
+    .toggle-switch,
+    .mobile-menu-btn,
+    #dark-mode-toggle,
+    #audio-toggle {
         min-height: 48px;
         min-width: 48px;
         touch-action: manipulation;
@@ -6471,7 +6474,7 @@ table {
 /* Extra small devices (phones in portrait, less than 360px) */
 @media (max-width: 359px) {
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .main-content {
