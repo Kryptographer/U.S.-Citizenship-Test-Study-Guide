@@ -85,6 +85,8 @@ html {
     scroll-behavior: smooth;
     /* Fluid base font size for better responsiveness */
     font-size: clamp(14px, 2vw + 0.5rem, 18px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -97,6 +99,8 @@ body {
     position: relative;
     overflow-x: hidden; /* Prevent horizontal scroll */
     width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: contain;
 }
 
 /* Stars Background Pattern */
@@ -5320,6 +5324,7 @@ body.dyslexia-friendly li {
     .toggle-switch {
         min-height: 48px;
         min-width: 48px;
+        touch-action: manipulation;
     }
 
     .nav-link {
