@@ -1,5 +1,5 @@
 // Current U.S. Government Officials Database
-// Last Updated: January 2026
+// Last Updated: March 2026
 // Note: This data should be updated when officials change
 
 const currentOfficials = {
@@ -350,7 +350,7 @@ const stateData = {
     },
     "New Jersey": {
         capital: "Trenton",
-        governor: { name: "Phil Murphy", party: "Democratic", termEnd: "2026" },
+        governor: { name: "Mikie Sherrill", party: "Democratic", termEnd: "2030" },
         senators: [
             { name: "Cory Booker", party: "Democratic", termEnd: "2027" },
             { name: "Andy Kim", party: "Democratic", termEnd: "2029" }
@@ -478,7 +478,7 @@ const stateData = {
     },
     "Virginia": {
         capital: "Richmond",
-        governor: { name: "Glenn Youngkin", party: "Republican", termEnd: "2026" },
+        governor: { name: "Abigail Spanberger", party: "Democratic", termEnd: "2030" },
         senators: [
             { name: "Mark Warner", party: "Democratic", termEnd: "2027" },
             { name: "Tim Kaine", party: "Democratic", termEnd: "2031" }

@@ -85,6 +85,8 @@ html {
     scroll-behavior: smooth;
     /* Fluid base font size for better responsiveness */
     font-size: clamp(14px, 2vw + 0.5rem, 18px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -97,6 +99,8 @@ body {
     position: relative;
     overflow-x: hidden; /* Prevent horizontal scroll */
     width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: contain;
 }
 
 /* Stars Background Pattern */
@@ -4694,7 +4698,10 @@ body.dark-mode .vocab-flashcard-back .vocab-definition {
    ===================================================== */
 @media (max-width: 768px) {
     .nav-controls {
-        display: none;
+        display: flex;
+        gap: 0.25rem;
+        margin-left: auto;
+        margin-right: 0.5rem;
     }
 
     .games-grid {
@@ -5317,9 +5324,13 @@ body.dyslexia-friendly li {
     .nav-link,
     .choice-btn,
     .matching-card,
-    .toggle-switch {
+    .toggle-switch,
+    .mobile-menu-btn,
+    #dark-mode-toggle,
+    #audio-toggle {
         min-height: 48px;
         min-width: 48px;
+        touch-action: manipulation;
     }
 
     .nav-link {
@@ -6345,9 +6356,11 @@ body.dark-mode .game-card {
 /* =====================================================
    SMOOTH PAGE LOAD
    ===================================================== */
-body {
-    opacity: 0;
-    animation: pageLoad 0.5s ease forwards;
+@media (prefers-reduced-motion: no-preference) {
+    body {
+        opacity: 0;
+        animation: pageLoad 0.3s ease forwards;
+    }
 }
 
 @keyframes pageLoad {
@@ -6466,7 +6479,7 @@ table {
 /* Extra small devices (phones in portrait, less than 360px) */
 @media (max-width: 359px) {
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .main-content {
@@ -6630,4 +6643,27 @@ html, body {
 .interview-prep-section {
     max-width: 100%;
     overflow-x: hidden;
+}
+
+/* Prevent hover transforms from sticking on touch devices */
+@media (hover: none) {
+    .btn:hover,
+    .stat-card:hover,
+    .quick-card:hover,
+    .category-card:hover,
+    .info-card:hover,
+    .tip-card:hover,
+    .flashcard:hover,
+    .game-card:hover,
+    .match-card:hover,
+    .official-card:hover,
+    .founder-card:hover,
+    .symbol-card:hover,
+    .holiday-card:hover,
+    .president-card:hover,
+    .vocab-card:hover,
+    .principle-card:hover,
+    .state-official-card:hover {
+        transform: none !important;
+    }
 }
